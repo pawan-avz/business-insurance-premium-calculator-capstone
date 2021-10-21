@@ -1,0 +1,49 @@
+
+.card{
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    margin: 0px 20px;
+}
+
+.card:hover{
+    box-shadow: -0px 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card h6{
+    text-align: center;
+    margin: 10px 0px;
+    font: optional;
+    color: black;
+    font-size: 12px;
+}
+
+.card span{
+    font-size: 18px;
+    color: royalblue;
+}
+
+.card h4{
+    
+    margin: 10px 0px;
+    color:rosybrown;
+    font-size: 25px;
+    text-align: center;
+}
+
+.card p{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: royalblue;
+}
+
+
+.img{
+    display: flex;
+    justify-content: center;
+}
+.img img{
+    width:190px;
+    height: 160px;
+}

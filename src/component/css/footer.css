@@ -1,0 +1,39 @@
+.footer {
+  margin-top: auto;
+  background-color: rgb(14, 108, 185);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.copyright {
+  color: #fff;
+}
+.first_footer ul {
+  display: flex;
+  justify-content: center;
+}
+
+.first_footer ul a {
+  list-style: none;
+  text-decoration: none;
+  color: white;
+  padding: 15px;
+  font-size: 25px;
+  font-weight: 100;
+  font-family: fantasy;
+}
+
+.second_footer ul {
+  display: flex;
+  justify-content: center;
+}
+
+.second_footer ul a {
+  list-style: none;
+  text-decoration: none;
+  color: white;
+  padding: 15px;
+  font-weight: 200;
+  font-family: fantasy;
+}

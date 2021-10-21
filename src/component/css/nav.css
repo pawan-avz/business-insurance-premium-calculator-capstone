@@ -1,0 +1,41 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(14, 108, 185);
+    padding: 20px;
+}
+.nav .logo {
+    display: flex;
+    flex-direction: column;
+}
+.nav .logo a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.nav .logo span{
+    font-size: 14px;
+    text-align: right;
+    text-transform: lowercase;
+    font-family:cursive;
+    color: rgb(191, 226, 108);
+}
+.nav ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+}
+.nav ul a{
+    text-decoration: none;
+    color:white;
+    margin-right: 30px;
+}

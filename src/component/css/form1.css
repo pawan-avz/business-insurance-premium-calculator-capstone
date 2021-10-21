@@ -1,0 +1,135 @@
+.info_form1 {
+  margin-top: 5%;
+}
+
+.info_form1 h1 {
+  text-align: center;
+  font-size: 60px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.info_form1 p {
+  margin-top: 5%;
+  text-align: center;
+  font-size: larger;
+}
+
+.form1 {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* min-height: 70vh; */
+}
+
+.customer_call {
+  text-align: center;
+  padding: 60px;
+  color: grey;
+  margin-bottom: 5%;
+}
+.profession {
+  width: 50%;
+}
+.profession select {
+  padding: 15px 20px;
+  margin: 20px;
+  appearance: none;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.get_quote button {
+  background-color: crimson;
+  color: white;
+  padding: 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.get_quote button:hover {
+  opacity: 0.8;
+}
+
+/* form 2  and form 3*/
+
+.form2 {
+  margin: 60px;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+}
+
+.input_label {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  width: 40%;
+  text-align: right;
+  margin-right: 3%;
+}
+.input {
+  width: 60%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
+  width: 70%;
+}
+
+input[type="date"] {
+  width: 70%;
+}
+.type_of_insurance {
+  margin-top: 5%;
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+}
+
+.input select {
+  padding: 10px;
+  /* margin: 20px; */
+  appearance: none;
+  border-radius: 5px;
+}
+.select_asset {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.select_asset .label {
+  width: 100%;
+  text-align: center;
+  margin-right: 0%;
+  font-size: 18px;
+}
+
+input[type="checkbox"] {
+  margin-left: 30%;
+}
+
+/* form 5 */
+.form5 {
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.form5 p {
+  font-size: 50px;
+  color: #ccc;
+}

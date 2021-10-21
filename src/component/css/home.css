@@ -1,0 +1,57 @@
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home h1 {
+  margin-bottom: 20px;
+}
+
+.home ul {
+  list-style-type: "✔︎";
+}
+
+.home ul li {
+  padding-left: 10px;
+}
+
+.buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.readMore {
+  width: 40%;
+}
+
+.card_container {
+  width: 96%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.plans {
+  width: 50%;
+  margin: auto;
+  /* display: flex;
+    justify-content: center;
+    flex-direction: column; */
+}
+
+.plans h4 {
+  font-size: 40px;
+  text-align: center;
+  font-family: cursive;
+  color: rgb(14, 108, 185);
+  border-bottom: 3px solid rgb(14, 108, 185);
+}
+
+.plans p {
+  text-align: center;
+  margin-bottom: 40px;
+}
