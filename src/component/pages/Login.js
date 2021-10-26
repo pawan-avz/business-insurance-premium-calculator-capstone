@@ -3,80 +3,145 @@ import { NavLink, useHistory } from "react-router-dom";
 import "../css/login.css";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [state, setState] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [errorMessage, setErrorMessage] = useState({
+    emailError: "",
+    passwordError: "",
+  });
+
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [credential, setCredential] = useState("");
-  const history = useHistory();
 
   //validate function
-  const validate = () => {
-    if (!email.includes("@") && password.length < 5) {
-      setEmailError("Invalid Email Address");
-      setPasswordError("Invalid Password");
-    } else if (!email.includes("@")) {
-      setEmailError("Invalid Email Address");
-    } else if (password.length < 6) {
-      setPasswordError("Invalid Password");
-    } else {
-      return true;
+  const validate = (e) => {
+    const name = e.target.name;
+
+    if (name === "email") {
+      const regex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
+      if (!regex.test(e.target.value)) {
+        //alert("hello");
+        setEmailError("Email is not valid");
+      } else {
+        setEmailError("");
+      }
+    }
+
+    // password checking
+    if (name === "password") {
+      if (!/^\S*$/.test(e.target.value)) {
+        setPasswordError("Password must not contain Whitespaces.");
+      } else if (!/^(?=.*[A-Z]).*$/.test(e.target.value)) {
+        setPasswordError(
+          "Password must have at least one Uppercase Character."
+        );
+      } else if (!/^(?=.*[a-z]).*$/.test(e.target.value)) {
+        setPasswordError(
+          "Password must have at least one Lowercase Character."
+        );
+      } else if (!/^(?=.*[0-9]).*$/.test(e.target.value)) {
+        setPasswordError("Password must contain at least one Digit.");
+      } else if (
+        !/^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/.test(
+          e.target.value
+        )
+      ) {
+        setPasswordError("Password must contain at least one Special Symbol.");
+      } else if (!/^.{8,16}$/.test(e.target.value)) {
+        setPasswordError("Password must be 08-16 Characters Long.");
+      } else setPasswordError("");
     }
   };
 
-  //get user details in localStorage
-  // localStorage.removeItem('userDetails')
-  const getUser = () => {
-    let user;
-    let data = JSON.parse(localStorage.getItem("userDetails")) || [];
-    // console.log(data)
-    // alert(Array.isArray(data))
-    if (data.length !== 0) {
-      user = data.find((email) => {
-        return email === email;
-      });
-      //alert(Array.isArray(result))
-      // console.log(user.password)
-      //user = Object.keys(result).map((key) => [Number(key), result[key]]);
-      //localStorage.setItem('userName', user.firstName+" "+user.lastName)
-      //alert(result.length)
-    } else {
-      return false;
-    }
-    if (
-      user.email.toLowerCase() === email.toLowerCase() &&
-      user.password.toLowerCase() === password.toLowerCase()
-    ) {
-      return true;
-    }
-  };
+  // handle function
 
-  //submit function
-
-  const submit = (e) => {
+  const handle = (e) => {
     e.preventDefault();
-    setEmailError("");
-    setPasswordError("");
-    if (validate() && getUser()) {
-      alert("you are loged in");
-      getUser();
-      history.push("/");
-    } else if (!getUser()) {
-      alert("User not Found");
-    } else {
-      alert("Invalid Credential");
+    const value = e.target.value;
+    setState({ ...state, [e.target.name]: value });
+  };
+
+  // function invoke when login button clicked
+
+  const postLoginCredential = () => {
+    // check for empty
+
+    if (/^$/.test(state.email)) {
+      setEmailError("Email field can't be empty");
+    }
+    if (/^$/.test(state.password)) {
+      setPasswordError("Password field can't be empty");
     }
   };
 
-  // console.log(localStorage.getItem('userDetails'))
+  // form input type, name placeholders ...
+  const formData = [
+    {
+      lable: "Email",
+      name: "email",
+      type: "email",
+      placeholder: "test@gmail.com",
+      value: state.email,
+      errorMessage: emailError,
+    },
+    {
+      lable: "Password",
+      name: "password",
+      type: "password",
+      placeholder: "Enter password",
+      value: state.password,
+      errorMessage: passwordError,
+    },
+  ];
 
   return (
-    <div className="login">
-      <div class="main_container">
-        <h2 className="h2">Login</h2>
+    <div className="login_container">
+      <div class="inner_container">
+        <h2 className="h2">Log in</h2>
+        <form method="POST">
+          <div>
+            {formData.map((data, index) => (
+              <div className="label_and_input">
+                <label>{data.lable}</label>
+                <input
+                  type={data.type}
+                  name={data.name}
+                  placeholder={data.placeholder}
+                  value={data.value}
+                  autocomplete="off"
+                  onChange={(e) => [handle(e), validate(e)]}
+                />
+                {data.errorMessage ? (
+                  <span style={{ color: "crimson" }}>{data.errorMessage}</span>
+                ) : null}
+              </div>
+            ))}
+          </div>
+        </form>
 
-        <form className=".form" action="/" method="POST">
-          <div class="container">
+        <div className="login_btn">
+          <button onClick={postLoginCredential}>Log in</button>
+        </div>
+        <div class="login_footer">
+          <div>
+            Need an account? <NavLink to="/registration">sign up</NavLink>
+          </div>
+          <div className="forgot">
+            <NavLink to="/forgot">forgot password?</NavLink>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
+
+{
+  /* <div class="container">
             <label for="email">
               <b>Email</b>
             </label>
@@ -101,28 +166,14 @@ const Login = () => {
             />
             {passwordError ? (
               <p style={{ color: "red" }}>{passwordError}</p>
-            ) : null}
-            <button className="btn" type="submit" onClick={submit}>
-              Login
-            </button>
-            <label>
-              <input type="checkbox" name="remember" /> Remember me
-            </label>
-          </div>
+            ) : null} */
+}
 
-          <div class="container" style={{ backgroundColor: "#f1f1f1" }}>
-            <span class="registration">
-              You don't have an account{" "}
-              <NavLink to="/registration">click here</NavLink>
-            </span>
-            <span class="forgot">
-              Forgot <NavLink to="#">password?</NavLink>
-            </span>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
-};
-
-export default Login;
+{
+  /* <label>
+            <input type="checkbox" name="remember" /> Remember me
+          </label> */
+}
+{
+  /* </div> */
+}
