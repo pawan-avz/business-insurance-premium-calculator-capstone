@@ -48,7 +48,6 @@ const Form4 = () => {
                   "Model*",
                   "Purchase rate*",
                   "Purchase date*",
-                  "Current rate*",
                 ].map((data, index) => (
                   <div className="input_label">
                     <div className="label">

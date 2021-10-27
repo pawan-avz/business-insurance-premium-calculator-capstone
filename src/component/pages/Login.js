@@ -1,79 +1,85 @@
 import React, { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import "../css/login.css";
+import axios from "axios";
 
 const Login = () => {
+  const history = useHistory();
   const [state, setState] = useState({
     email: "",
     password: "",
   });
-
-  const [errorMessage, setErrorMessage] = useState({
-    emailError: "",
-    passwordError: "",
-  });
-
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
-  //validate function
-  const validate = (e) => {
-    const name = e.target.name;
-
-    if (name === "email") {
-      const regex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
-      if (!regex.test(e.target.value)) {
-        //alert("hello");
-        setEmailError("Email is not valid");
-      } else {
-        setEmailError("");
-      }
-    }
-
-    // password checking
-    if (name === "password") {
-      if (!/^\S*$/.test(e.target.value)) {
-        setPasswordError("Password must not contain Whitespaces.");
-      } else if (!/^(?=.*[A-Z]).*$/.test(e.target.value)) {
-        setPasswordError(
-          "Password must have at least one Uppercase Character."
-        );
-      } else if (!/^(?=.*[a-z]).*$/.test(e.target.value)) {
-        setPasswordError(
-          "Password must have at least one Lowercase Character."
-        );
-      } else if (!/^(?=.*[0-9]).*$/.test(e.target.value)) {
-        setPasswordError("Password must contain at least one Digit.");
-      } else if (
-        !/^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/.test(
-          e.target.value
-        )
-      ) {
-        setPasswordError("Password must contain at least one Special Symbol.");
-      } else if (!/^.{8,16}$/.test(e.target.value)) {
-        setPasswordError("Password must be 08-16 Characters Long.");
-      } else setPasswordError("");
-    }
-  };
-
-  // handle function
-
+  const [loginMessage, setLoginMessage] = useState("");
+  const [loginController, setLoginController] = useState(true);
+  // handle function set data into state
   const handle = (e) => {
     e.preventDefault();
     const value = e.target.value;
     setState({ ...state, [e.target.name]: value });
   };
 
-  // function invoke when login button clicked
+  //validate function
+  const validate = (e) => {
+    const name = e.target.name;
+    const regex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
+    if (name === "email") {
+      if (!regex.test(e.target.value)) {
+        setEmailError("Email is not valid");
+        setLoginController(false);
+      } else {
+        setEmailError("");
+        setLoginController(true);
+      }
+    }
+    // if password field not empty then remove error message
+    if (name === "password") {
+      if (/^$/.test(state.password)) {
+        setPasswordError("");
+      }
+    }
+  };
 
-  const postLoginCredential = () => {
-    // check for empty
-
+  //empty filed validation onclick checking
+  const validateEmpty = () => {
+    let status = true;
     if (/^$/.test(state.email)) {
       setEmailError("Email field can't be empty");
+      status = false;
     }
     if (/^$/.test(state.password)) {
       setPasswordError("Password field can't be empty");
+      status = false;
+    }
+    return status;
+  };
+  //post fetch function
+  const postFetch = async () => {
+    try {
+      const request = await axios.post("/login", {
+        headers: {
+          "Content-type": "application/json",
+        },
+        method: "POST",
+        body: { state }, //post login creadential
+      });
+      if (request.status === 200) {
+        setLoginMessage("Loged in successfully");
+        history.push("/dashboard"); //redirect to dashboard
+      } else {
+        setLoginMessage("Login failed");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // function invoke when login button clicked
+  const postLoginCredential = () => {
+    if (loginController && validateEmpty()) {
+      postFetch();
+      history.push("/"); //for test
     }
   };
 
@@ -141,39 +147,4 @@ const Login = () => {
 export default Login;
 
 {
-  /* <div class="container">
-            <label for="email">
-              <b>Email</b>
-            </label>
-            <input
-              type="text"
-              placeholder="Enter email"
-              name="email"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-            />
-            {emailError ? <p style={{ color: "red" }}>{emailError}</p> : null}
-
-            <label for="password">
-              <b>Password</b>
-            </label>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              name="password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-            />
-            {passwordError ? (
-              <p style={{ color: "red" }}>{passwordError}</p>
-            ) : null} */
-}
-
-{
-  /* <label>
-            <input type="checkbox" name="remember" /> Remember me
-          </label> */
-}
-{
-  /* </div> */
 }
