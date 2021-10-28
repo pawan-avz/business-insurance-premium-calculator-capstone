@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Form1 from "./quotes_component/Form1";
-import Form2 from "./quotes_component/Form2";
-import Form3 from "./quotes_component/Form3";
-import Form4 from "./quotes_component/Form4";
+import Form1 from "../Quote/quotes_component/Form1";
+import Form2 from "../Quote/quotes_component/Form2";
+import Form3 from "../Quote/quotes_component/Form3";
+import Form4 from "../Quote/quotes_component/Form4";
 import { Route } from "react-router";
 import { NavLink, Switch } from "react-router-dom";
-import "../css/quotes.css";
+import "../../css/quotes.css";
 import Form5 from "./quotes_component/Form5";
 
 const Quote = () => {
