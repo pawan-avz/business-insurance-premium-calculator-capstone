@@ -26,38 +26,39 @@ const Quote = () => {
     <>
       <div className="quotes_container">
         <div className="left_side">
-          {[
-            "Insurance type",
-            "About you",
-            "Your business",
-            "Property details",
-            "Premium",
-            "Payment",
-          ].map((data, index) => (
-            <div
-              key={index}
-              className={next - 2 === index ? "step step-active " : "step "}
-            >
-              <div>
-                <div className="circle">
-                  {next - 2 > index ? "✔︎" : ++index}
+          <div className="step_container">
+            {[
+              "Insurance type",
+              "About you",
+              "Your business",
+              "Property details",
+              "Premium",
+              "Payment",
+            ].map((data, index) => (
+              <div
+                key={index}
+                className={next - 2 === index ? "step step-active " : "step "}
+              >
+                <div>
+                  <div className="circle">
+                    {next - 2 > index ? "✔︎" : ++index}
+                  </div>
+                </div>
+                <div>
+                  <div className="title">{data}</div>
                 </div>
               </div>
+            ))}
+            {/* 4th step */}
+            <div className={next - 2 === 6 ? "step step-active" : "step"}>
               <div>
-                <div className="title">{data}</div>
+                <div className="circle4">{next - 2 > 3 ? "✔︎" : 7}</div>
+              </div>
+              <div>
+                <div className="title">Finish</div>
               </div>
             </div>
-          ))}
-          {/* 4th step */}
-          <div className={next - 2 === 6 ? "step step-active" : "step"}>
-            <div>
-              <div className="circle4">{next - 2 > 3 ? "✔︎" : 7}</div>
-            </div>
-            <div>
-              <div className="title">Finish</div>
-            </div>
           </div>
-
           {/* 4th step end */}
 
           <div className="next_back">
@@ -78,7 +79,7 @@ const Quote = () => {
           </div>
         </div>
 
-        <div className="right_side">
+        {/* <div className="right_side">
           <Switch>
             <Route exact path="/quote/form1">
               <Form1 changeNext={changeNext} />
@@ -96,7 +97,7 @@ const Quote = () => {
               <Form5 />
             </Route>
           </Switch>
-        </div>
+        </div> */}
       </div>
     </>
   );

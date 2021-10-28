@@ -14,7 +14,7 @@ import Claim from "./component/pages/Claim";
 function App() {
   return (
     <div className="App">
-      <Nav />
+      {/* <Nav /> */}
 
       <Route exact path="/">
         <Home />
@@ -37,7 +37,7 @@ function App() {
         <Login />
       </Route>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
