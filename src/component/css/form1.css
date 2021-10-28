@@ -72,16 +72,9 @@
   text-align: right;
   margin-right: 3%;
 }
-.input {
-  width: 60%;
-}
 
-input[type="text"],
-input[type="email"],
-input[type="number"],
-select {
-  width: 70%;
-}
+
+
 
 input[type="date"] {
   width: 70%;
@@ -113,10 +106,10 @@ input[type="date"] {
   font-size: 18px;
 }
 
+
 input[type="checkbox"] {
   margin-left: 30%;
 }
-
 /* form 5 */
 .form5 {
   border: 2px solid #ccc;
