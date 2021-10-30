@@ -85,9 +85,9 @@ export const LoginFooter = styled.div`
 
   div {
     margin-top: 10px;
-  }
-  a {
-    color: #38af83;
-    text-decoration: none;
+    a {
+      color: #38af83;
+      text-decoration: none;
+    }
   }
 `;
