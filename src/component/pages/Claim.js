@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../css/claim.css";
 import claimImg from "../images/claim.jpg";
+
 function Claim() {
   return (
     <>

@@ -1,128 +1,150 @@
 import React, { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import "../css/login.css";
+import axios from "axios";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const history = useHistory();
+  const [state, setState] = useState({
+    email: "",
+    password: "",
+  });
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [credential, setCredential] = useState("");
-  const history = useHistory();
+  const [loginMessage, setLoginMessage] = useState("");
+  const [loginController, setLoginController] = useState(true);
+  // handle function set data into state
+  const handle = (e) => {
+    e.preventDefault();
+    const value = e.target.value;
+    setState({ ...state, [e.target.name]: value });
+  };
 
   //validate function
-  const validate = () => {
-    if (!email.includes("@") && password.length < 5) {
-      setEmailError("Invalid Email Address");
-      setPasswordError("Invalid Password");
-    } else if (!email.includes("@")) {
-      setEmailError("Invalid Email Address");
-    } else if (password.length < 6) {
-      setPasswordError("Invalid Password");
-    } else {
-      return true;
+  const validate = (e) => {
+    const name = e.target.name;
+    const regex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
+    if (name === "email") {
+      if (!regex.test(e.target.value)) {
+        setEmailError("Email is not valid");
+        setLoginController(false);
+      } else {
+        setEmailError("");
+        setLoginController(true);
+      }
+    }
+    // if password field not empty then remove error message
+    if (name === "password") {
+      if (/^$/.test(state.password)) {
+        setPasswordError("");
+      }
     }
   };
 
-  //get user details in localStorage
-  // localStorage.removeItem('userDetails')
-  const getUser = () => {
-    let user;
-    let data = JSON.parse(localStorage.getItem("userDetails")) || [];
-    // console.log(data)
-    // alert(Array.isArray(data))
-    if (data.length !== 0) {
-      user = data.find((email) => {
-        return email === email;
+  //empty filed validation onclick checking
+  const validateEmpty = () => {
+    let status = true;
+    if (/^$/.test(state.email)) {
+      setEmailError("Email field can't be empty");
+      status = false;
+    }
+    if (/^$/.test(state.password)) {
+      setPasswordError("Password field can't be empty");
+      status = false;
+    }
+    return status;
+  };
+  //post fetch function
+  const postFetch = async () => {
+    try {
+      const request = await axios.post("/login", {
+        headers: {
+          "Content-type": "application/json",
+        },
+        method: "POST",
+        body: { state }, //post login creadential
       });
-      //alert(Array.isArray(result))
-      // console.log(user.password)
-      //user = Object.keys(result).map((key) => [Number(key), result[key]]);
-      //localStorage.setItem('userName', user.firstName+" "+user.lastName)
-      //alert(result.length)
-    } else {
-      return false;
-    }
-    if (
-      user.email.toLowerCase() === email.toLowerCase() &&
-      user.password.toLowerCase() === password.toLowerCase()
-    ) {
-      return true;
+      if (request.status === 200) {
+        setLoginMessage("Loged in successfully");
+        history.push("/dashboard"); //redirect to dashboard
+      } else {
+        setLoginMessage("Login failed");
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
-  //submit function
-
-  const submit = (e) => {
-    e.preventDefault();
-    setEmailError("");
-    setPasswordError("");
-    if (validate() && getUser()) {
-      alert("you are loged in");
-      getUser();
-      history.push("/");
-    } else if (!getUser()) {
-      alert("User not Found");
-    } else {
-      alert("Invalid Credential");
+  // function invoke when login button clicked
+  const postLoginCredential = () => {
+    if (loginController && validateEmpty()) {
+      postFetch();
+      history.push("/"); //for test
     }
   };
 
-  // console.log(localStorage.getItem('userDetails'))
+  // form input type, name placeholders ...
+  const formData = [
+    {
+      lable: "Email",
+      name: "email",
+      type: "email",
+      placeholder: "test@gmail.com",
+      value: state.email,
+      errorMessage: emailError,
+    },
+    {
+      lable: "Password",
+      name: "password",
+      type: "password",
+      placeholder: "Enter password",
+      value: state.password,
+      errorMessage: passwordError,
+    },
+  ];
 
   return (
-    <div className="login">
-      <div class="main_container">
-        <h2 className="h2">Login</h2>
-
-        <form className=".form" action="/" method="POST">
-          <div class="container">
-            <label for="email">
-              <b>Email</b>
-            </label>
-            <input
-              type="text"
-              placeholder="Enter email"
-              name="email"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-            />
-            {emailError ? <p style={{ color: "red" }}>{emailError}</p> : null}
-
-            <label for="password">
-              <b>Password</b>
-            </label>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              name="password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-            />
-            {passwordError ? (
-              <p style={{ color: "red" }}>{passwordError}</p>
-            ) : null}
-            <button className="btn" type="submit" onClick={submit}>
-              Login
-            </button>
-            <label>
-              <input type="checkbox" name="remember" /> Remember me
-            </label>
-          </div>
-
-          <div class="container" style={{ backgroundColor: "#f1f1f1" }}>
-            <span class="registration">
-              You don't have an account{" "}
-              <NavLink to="/registration">click here</NavLink>
-            </span>
-            <span class="forgot">
-              Forgot <NavLink to="#">password?</NavLink>
-            </span>
+    <div className="login_container">
+      <div class="inner_container">
+        <h2 className="h2">Log in</h2>
+        <form method="POST">
+          <div>
+            {formData.map((data, index) => (
+              <div className="label_and_input">
+                <label>{data.lable}</label>
+                <input
+                  type={data.type}
+                  name={data.name}
+                  placeholder={data.placeholder}
+                  value={data.value}
+                  autocomplete="off"
+                  onChange={(e) => [handle(e), validate(e)]}
+                />
+                {data.errorMessage ? (
+                  <span style={{ color: "crimson" }}>{data.errorMessage}</span>
+                ) : null}
+              </div>
+            ))}
           </div>
         </form>
+
+        <div className="login_btn">
+          <button type="submit" onClick={postLoginCredential}>Log in</button>
+        </div>
+        <div class="login_footer">
+          <div>
+            Need an account? <NavLink to="/registration">sign up</NavLink>
+          </div>
+          <div className="forgot">
+            <NavLink to="/forgot">forgot password?</NavLink>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
 export default Login;
+
+{
+}
