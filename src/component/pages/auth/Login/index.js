@@ -140,9 +140,9 @@ const Login = () => {
         </ButtonContainer>
 
         <LoginFooter>
-          {["sign up", "forgot password?"].map((data, index) => (
+          {["registration", "forgot password?"].map((data, index) => (
             <div key={index}>
-              {data === "sign up" && <span>Need an account? </span>}
+              {data === "registration" && <span>Need an account? </span>}
               <NavLink
                 type={data.split(" ")[0]}
                 to={"/" + data.split(" ").join("")}
