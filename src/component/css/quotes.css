@@ -17,12 +17,44 @@
   width: 75%;
 }
 
+/* media query for quotes */
+@media only screen and (max-width: 600px) {
+  .quotes_container {
+    flex-direction: column;
+  }
+  .step_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .left_side {
+    width: 100%;
+    display: inline-block;
+  }
+  .right_side {
+    width: 100%;
+  }
+  .title {
+    display: none;
+  }
+  .next_back {
+    /* display: none; */
+    align-items: flex-end !important;
+  }
+  .step > div {
+    margin-left: 0.5rem;
+    padding-left: 1em;
+  }
+}
+
 .next_back {
   margin-top: 25%;
   display: flex;
   /* flex-direction: column; */
   justify-content: center;
   align-items: center;
+  /* display: none !important; */
 }
 .next button {
   background-color: rgb(6, 115, 165);
@@ -35,7 +67,6 @@
 .next_back .next button,
 .back button {
   color: white;
-
   font-size: 15px;
   margin: 5px;
   border: none;
@@ -48,18 +79,19 @@
 /* Steps */
 .step {
   position: relative;
+  display: flex;
   min-height: 1em;
   color: gray;
 }
 
-.step + .step {
+.step {
   margin-top: 1.5em;
 }
-.step > div:first-child {
+/* .step > div:first-child {
   position: static;
   height: 0;
-}
-.step > div:not(:first-child) {
+} */
+.step > div {
   margin-left: 1.5em;
   padding-left: 1em;
 }
@@ -87,10 +119,10 @@
 }
 
 /* vertical line */
-.circle:after {
+/* .circle:after {
   content: " ";
   position: absolute;
-  display: block;
+  display: flex;
   top: 1px;
   right: 50%;
   bottom: 1px;
@@ -105,7 +137,7 @@
 
 .step:last-child .circle:after {
   display: none;
-}
+} */
 
 /* Stepper Titles */
 .title {

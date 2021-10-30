@@ -1,12 +1,11 @@
-
 import Footer from "./component/pages/Footer";
 import Nav from "./component/pages/Nav";
 import Home from "./component/pages/Home";
 import { Switch } from "react-router-dom";
 import { Route } from "react-router";
-import Login from "./component/pages/Login";
+import Login from "./component/pages/auth/Login";
 import Policies from "./component/pages/Policies";
-import Quotes from "./component/pages/Quotes";
+import Quote from "./component/pages/Quote";
 import Premium from "./component/pages/Premium";
 // import Registration from "./component/pages/Registration";
 import Claim from "./component/pages/Claim";
@@ -23,7 +22,7 @@ function App() {
         <Premium />
       </Route>
       <Route path="/quote">
-        <Quotes />
+        <Quote />
       </Route>
 
       <Route exact path="/claim">

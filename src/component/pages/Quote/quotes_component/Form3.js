@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import "../../css/form1.css";
+import "../../../css/form1.css";
 const Form3 = () => {
   const [insuranceType, setInsuranceType] = useState("");
   const [coverageDate, setCoverageDate] = useState("");

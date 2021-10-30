@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import "../css/login.css";
+// import "../css/login.css";
 import axios from "axios";
+import {
+  Container,
+  InnerContainer,
+  H2,
+  LableAndInput,
+  ButtonContainer,
+  Button,
+  LoginFooter,
+} from "./LoginStyle";
 
 const Login = () => {
   const history = useHistory();
@@ -104,45 +113,47 @@ const Login = () => {
   ];
 
   return (
-    <div className="login_container">
-      <div class="inner_container">
-        <h2 className="h2">Log in</h2>
+    <Container>
+      <InnerContainer>
+        <H2>Log in</H2>
         <form method="POST">
-          <div>
-            {formData.map((data, index) => (
-              <div className="label_and_input">
-                <label>{data.lable}</label>
-                <input
-                  type={data.type}
-                  name={data.name}
-                  placeholder={data.placeholder}
-                  value={data.value}
-                  autocomplete="off"
-                  onChange={(e) => [handle(e), validate(e)]}
-                />
-                {data.errorMessage ? (
-                  <span style={{ color: "crimson" }}>{data.errorMessage}</span>
-                ) : null}
-              </div>
-            ))}
-          </div>
+          {formData.map((data, index) => (
+            <LableAndInput>
+              <label>{data.lable}</label>
+              <input
+                type={data.type}
+                name={data.name}
+                placeholder={data.placeholder}
+                value={data.value}
+                autocomplete="off"
+                onChange={(e) => [handle(e), validate(e)]}
+              />
+              {data.errorMessage ? (
+                <span style={{ color: "crimson" }}>{data.errorMessage}</span>
+              ) : null}
+            </LableAndInput>
+          ))}
         </form>
 
-        <div className="login_btn">
-         
-          <button onClick={postLoginCredential}>Log in</button>
+        <ButtonContainer>
+          <Button onClick={postLoginCredential}>Log in</Button>
+        </ButtonContainer>
 
-        </div>
-        <div class="login_footer">
-          <div>
-            Need an account? <NavLink to="/registration">sign up</NavLink>
-          </div>
-          <div className="forgot">
-            <NavLink to="/forgot">forgot password?</NavLink>
-          </div>
-        </div>
-      </div>
-    </div>
+        <LoginFooter>
+          {["registration", "forgot password?"].map((data, index) => (
+            <div key={index}>
+              {data === "registration" && <span>Need an account? </span>}
+              <NavLink
+                type={data.split(" ")[0]}
+                to={"/" + data.split(" ").join("")}
+              >
+                {data}
+              </NavLink>
+            </div>
+          ))}
+        </LoginFooter>
+      </InnerContainer>
+    </Container>
   );
 };
 

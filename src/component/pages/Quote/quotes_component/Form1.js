@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../../css/form1.css";
+import "../../../css/form1.css";
 const Form1 = (props) => {
   // const state = [
   //   "State",
