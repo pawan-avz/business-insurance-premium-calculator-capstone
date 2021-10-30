@@ -129,7 +129,9 @@ const Login = () => {
         </form>
 
         <div className="login_btn">
-          <button type="submit" onClick={postLoginCredential}>Log in</button>
+         
+          <button onClick={postLoginCredential}>Log in</button>
+
         </div>
         <div class="login_footer">
           <div>
