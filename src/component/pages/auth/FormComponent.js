@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  min-height: 90vh;
+  height: 800px;
   justify-content: center;
   align-items: center;
 `;
@@ -54,7 +54,7 @@ const FormHeading = styled.p`
 `;
 const Formfooter = styled.p`
   background-color: rgb(241, 241, 241);
-
+  text-align:center;
   margin: 20px 0;
   padding: 10px;
   font-size: 12px;
