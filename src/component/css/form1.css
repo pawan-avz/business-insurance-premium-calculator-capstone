@@ -76,9 +76,7 @@
 
 
 
-input[type="date"] {
-  width: 70%;
-}
+
 .type_of_insurance {
   margin-top: 5%;
   display: flex;
@@ -107,9 +105,7 @@ input[type="date"] {
 }
 
 
-input[type="checkbox"] {
-  margin-left: 30%;
-}
+
 /* form 5 */
 .form5 {
   border: 2px solid #ccc;

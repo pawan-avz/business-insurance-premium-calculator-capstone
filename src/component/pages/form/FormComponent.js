@@ -18,12 +18,15 @@ const Content = styled.div`
 `;
 
 const Input = styled.input`
+
   padding: 14px;
   border-radius: 3px;
   border: 1px solid #ccc;
   margin-bottom: 15px;
   margin-top:3px;
+ 
 `;
+
 const FormContainer = styled.div`
   margin: 30px;
 `;
@@ -33,15 +36,18 @@ const FormControl = styled.div`
   // align-items:center;
 `;
 const Label = styled.label`
-  width: 20%;
+  width: auto;
   font-size: 14px;
   font-weight: 500;
+  margin-left:5px;
+  
  
 `;
 const InputDiv = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-top:5px;
 `;
 const FormHeading = styled.p`
   // background-color: rgb(241, 241, 241);
@@ -87,6 +93,45 @@ const ErrorMessage = styled.p`
   font-size: 12px;
   text-align: center;
 `;
+const Select = styled.select`
+  width: 100%;
+  height: 46px;
+  background: white;
+  color: gray;
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  margin-bottom:5px;
+
+  option {
+    color: black;
+    background: white;
+    display: flex;
+    white-space: pre;
+    min-height: 20px;
+    padding: 0px 0px 1px;
+    
+  }
+`;
+const CheckboxDiv=styled.div`
+   display:flex;
+   flex-direction:row;
+   margin-top:5px;
+   margin-left:25px;
+  //  justify-content:center;
+   align-item:center;
+`;
+const Checkbox =(props)=>{
+    return(
+      <CheckboxDiv>
+      <input type="checkbox" id={props.id}/>
+      <Label for={props.id}>{props.label}</Label>
+  
+      </CheckboxDiv>
+    
+    )
+}
 export {
   Container,
   Content,
@@ -100,4 +145,6 @@ export {
   ErrorMessage,
   Formfooter,
   SubmitButton,
+  Select,
+  Checkbox
 };
