@@ -32,7 +32,7 @@ export default function index() {
             <FormControl>
               <Label for="fName">How is your business registered ?</Label>
               <InputDiv>
-                <Select>
+                <Select required>
                 {registred.map((data) => (
                   <option value={data}>{data}</option>
                 ))}
@@ -51,6 +51,7 @@ export default function index() {
                   id="fName"
                   type="date"
                   placeholder="Enter first name"
+                  required
                   //   onChange={handleChange("firstName")}
                 />
                 {/* {errors.firstName && (
