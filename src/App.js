@@ -1,6 +1,6 @@
 import "./App.css";
 import Footer from "./component/pages/Footer";
-import Nav from "./component/pages/Nav";
+
 import Home from "./component/pages/Home";
 import { Switch } from "react-router-dom";
 import { Route } from "react-router";
@@ -10,11 +10,12 @@ import Quotes from "./component/pages/Quotes";
 import Premium from "./component/pages/Premium";
 import Registration from "./component/pages/Registration";
 import Claim from "./component/pages/Claim";
+import Navbar from "./component/pages/Nav/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <Nav />
+      <Navbar />
 
       <Route exact path="/">
         <Home />
