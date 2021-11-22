@@ -255,7 +255,7 @@ const Form1 = (props) => {
               <button onClick={props.changeNext}>Get a Quote</button>
             </NavLink>
           </div>
-        </div>
+        </div> 
 
         <p className="customer_call">
           Speak with a licensed insurance agent: +91 9999999988 Monday – Friday,
