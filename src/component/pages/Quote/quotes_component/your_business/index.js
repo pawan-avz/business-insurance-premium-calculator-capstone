@@ -11,6 +11,7 @@ import {
   InputDiv,Checkbox,
   Label,Select
 } from "../../../form/FormComponent";
+import { Button } from "@mui/material";
 const registred = ["Association", "Corporation", "Indivisual", "Partnership"];
 
 const property=[{
@@ -69,6 +70,7 @@ export default function Index() {
               }
             
             </FormControl>
+            <Button onClick={handleSubmit} >Submit</Button>
           </form>
         </FormContainer>
       </Content>

@@ -125,7 +125,7 @@ const CheckboxDiv=styled.div`
 const Checkbox =(props)=>{
     return(
       <CheckboxDiv>
-      <input type="checkbox" id={props.id}/>
+      <input type="checkbox" id={props.id} value={props.label} onChange={props.change("property")}/>
       <Label for={props.id}>{props.label}</Label>
   
       </CheckboxDiv>
