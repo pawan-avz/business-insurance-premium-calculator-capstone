@@ -4,6 +4,7 @@ import Home from "./component/pages/Home";
 import { Switch } from "react-router-dom";
 import { Route } from "react-router";
 import Login from "./component/pages/auth/Login";
+import Forgotpswd from "./component/pages/auth/Forgotpswd/Forgotpswd"
 import Policies from "./component/pages/Policies";
 import Quote from "./component/pages/Quote";
 import Premium from "./component/pages/Premium";
@@ -35,7 +36,9 @@ function App() {
       <Route exact path="/login">
         <Login />
       </Route>
-
+      <Route exact path="/forgotpassword">
+       <Forgotpswd />
+      </Route>
       <Footer />
     </div>
   );

@@ -79,7 +79,7 @@ const Quote = () => {
           </div>
         </div>
 
-        {/* <div className="right_side">
+        <div className="right_side">
           <Switch>
             <Route exact path="/quote/form1">
               <Form1 changeNext={changeNext} />
@@ -97,7 +97,7 @@ const Quote = () => {
               <Form5 />
             </Route>
           </Switch>
-        </div> */}
+        </div>
       </div>
     </>
   );
