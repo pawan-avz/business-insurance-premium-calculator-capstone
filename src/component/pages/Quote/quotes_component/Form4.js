@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../../css/form1.css";
+import "../../../css/form1.css";
 const Form4 = () => {
   let arr = JSON.parse(localStorage.getItem("selected_assets"));
   console.log(arr);
@@ -48,7 +48,6 @@ const Form4 = () => {
                   "Model*",
                   "Purchase rate*",
                   "Purchase date*",
-                  "Current rate*",
                 ].map((data, index) => (
                   <div className="input_label">
                     <div className="label">

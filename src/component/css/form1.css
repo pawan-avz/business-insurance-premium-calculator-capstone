@@ -46,6 +46,7 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  
 }
 
 .get_quote button:hover {
@@ -72,16 +73,9 @@
   text-align: right;
   margin-right: 3%;
 }
-.input {
-  width: 60%;
-}
 
-input[type="text"],
-input[type="email"],
-input[type="number"],
-select {
-  width: 70%;
-}
+
+
 
 input[type="date"] {
   width: 70%;
@@ -113,10 +107,10 @@ input[type="date"] {
   font-size: 18px;
 }
 
+
 input[type="checkbox"] {
   margin-left: 30%;
 }
-
 /* form 5 */
 .form5 {
   border: 2px solid #ccc;
@@ -132,4 +126,30 @@ input[type="checkbox"] {
 .form5 p {
   font-size: 50px;
   color: #ccc;
+}
+
+@media only screen and (max-width:600px)
+{
+.info_form1 h1 {
+  /* text-align: center; */
+  font-size: 30px;
+  margin-right: 30px;
+}
+.info_form1 p{
+  margin-right: 40px;
+}
+.form1 label{
+  margin-left: 70px;
+  margin-right: 50px;
+}
+.get_quote button {
+  margin-left: 70px;
+  margin-right: 60px;
+}
+.profession{
+  margin-right: 70px;
+} 
+.customer_call{
+  margin-right: 30px;
+}
 }
