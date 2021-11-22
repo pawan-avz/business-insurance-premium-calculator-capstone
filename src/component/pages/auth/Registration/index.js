@@ -13,7 +13,7 @@ import {
   FormHeading,
   InlineDiv,SubmitButton,
   ErrorMessage,Formfooter,Input
-} from "../FormComponent";
+} from "../../form/FormComponent";
 
 export default function Index() {
   const { handleChange, user, errors, handleSubmit } = useForm(validateInfo);

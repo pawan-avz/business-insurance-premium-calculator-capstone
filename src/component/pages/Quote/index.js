@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Form1 from "../Quote/quotes_component/Form1";
 import Form2 from "../Quote/quotes_component/Form2";
 import Form3 from "../Quote/quotes_component/Form3";
+import YourBusiness from "./quotes_component/your_business";
 import Form4 from "../Quote/quotes_component/Form4";
 import { Route } from "react-router";
 import { NavLink, Switch } from "react-router-dom";
@@ -79,7 +80,7 @@ const Quote = () => {
           </div>
         </div>
 
-        {/* <div className="right_side">
+        <div className="right_side">
           <Switch>
             <Route exact path="/quote/form1">
               <Form1 changeNext={changeNext} />
@@ -88,7 +89,8 @@ const Quote = () => {
               <Form2 />
             </Route>
             <Route exact path="/quote/form3">
-              <Form3 />
+    
+              <YourBusiness/>
             </Route>
             <Route exact path="/quote/form4">
               <Form4 />
@@ -97,7 +99,7 @@ const Quote = () => {
               <Form5 />
             </Route>
           </Switch>
-        </div> */}
+        </div>
       </div>
     </>
   );
