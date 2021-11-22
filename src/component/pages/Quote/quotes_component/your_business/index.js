@@ -1,4 +1,5 @@
 import React from "react";
+import useForm from "./useForm";
 import {
   Container,
   Content,
@@ -11,6 +12,7 @@ import {
   Label,Select
 } from "../../../form/FormComponent";
 const registred = ["Association", "Corporation", "Indivisual", "Partnership"];
+
 const property=[{
     id:'1',
     label:"car"}
@@ -22,7 +24,8 @@ const property=[{
         label:"computer"
     }
 ]
-export default function index() {
+export default function Index() {
+  const { handleChange,business, handleSubmit } = useForm();
   return (
     <Container>
       <Content>
@@ -30,9 +33,9 @@ export default function index() {
         <FormContainer>
           <form>
             <FormControl>
-              <Label for="fName">How is your business registered ?</Label>
+              <Label for="registered">How is your business registered ?</Label>
               <InputDiv>
-                <Select required>
+                <Select required onChange={handleChange("registered")} id="registered">
                 {registred.map((data) => (
                   <option value={data}>{data}</option>
                 ))}
@@ -43,16 +46,16 @@ export default function index() {
               </InputDiv>
             </FormControl>
             <FormControl>
-              <Label for="fName">
+              <Label for="date">
                 What date would you like coverage to start ?
               </Label>
               <InputDiv>
                 <Input
-                  id="fName"
+                  id="date"
                   type="date"
-                  placeholder="Enter first name"
+                
                   required
-                  //   onChange={handleChange("firstName")}
+                    onChange={handleChange("date")}
                 />
                 {/* {errors.firstName && (
                   <ErrorMessage>{errors.firstName}</ErrorMessage>
@@ -62,7 +65,7 @@ export default function index() {
             <FormControl>
               <Label for="gender">select your property</Label>
               {
-                  property.map((item)=><Checkbox label={item.label} id={item.id}/>)
+                  property.map((item)=><Checkbox label={item.label} id={item.id} change={handleChange}/>)
               }
             
             </FormControl>
