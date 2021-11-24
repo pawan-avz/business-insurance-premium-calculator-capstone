@@ -54,6 +54,10 @@ export const LableAndInput = styled.div`
     margin-right: 0px;
     text-align: center;
   }
+  p{
+    color:red;
+
+  }
 `;
 
 
