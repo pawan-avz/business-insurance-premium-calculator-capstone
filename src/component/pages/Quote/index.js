@@ -3,6 +3,7 @@ import Form1 from "../Quote/quotes_component/Form1";
 import Form2 from "../Quote/quotes_component/Form2";
 import Form3 from "../Quote/quotes_component/Form3";
 import YourBusiness from "./quotes_component/your_business";
+import PropertiesDetails from './quotes_component/properties_details';
 import Form4 from "../Quote/quotes_component/Form4";
 import { Route } from "react-router";
 import { NavLink, Switch } from "react-router-dom";
@@ -93,7 +94,7 @@ const Quote = () => {
               <YourBusiness/>
             </Route>
             <Route exact path="/quote/form4">
-              <Form4 />
+             <PropertiesDetails/>
             </Route>
             <Route exact path="/quote/form5">
               <Form5 />

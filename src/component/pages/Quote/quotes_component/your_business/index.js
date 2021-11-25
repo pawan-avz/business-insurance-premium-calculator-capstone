@@ -7,11 +7,11 @@ import {
   FormContainer,
   FormControl,
   InlineDiv,
-  Input,
+  Input,ErrorMessage,
   InputDiv,Checkbox,
-  Label,Select
+  Label,Select,BackButton,ContinueButton,ButtonDiv
 } from "../../../form/FormComponent";
-import { Button } from "@mui/material";
+
 const registred = ["Association", "Corporation", "Indivisual", "Partnership"];
 
 const property=[{
@@ -26,7 +26,7 @@ const property=[{
     }
 ]
 export default function Index() {
-  const { handleChange,business, handleSubmit } = useForm();
+  const { handleChange,business, handleSubmit,errors } = useForm();
   return (
     <Container>
       <Content>
@@ -41,9 +41,7 @@ export default function Index() {
                   <option value={data}>{data}</option>
                 ))}
                </Select>
-                {/* {errors.firstName && (
-                  <ErrorMessage>{errors.firstName}</ErrorMessage>
-                )} */}
+             
               </InputDiv>
             </FormControl>
             <FormControl>
@@ -58,22 +56,33 @@ export default function Index() {
                   required
                     onChange={handleChange("date")}
                 />
-                {/* {errors.firstName && (
-                  <ErrorMessage>{errors.firstName}</ErrorMessage>
-                )} */}
+                {errors.date && (
+                  <ErrorMessage>{errors.date}</ErrorMessage>
+                )}
               </InputDiv>
             </FormControl>
             <FormControl>
-              <Label for="gender">select your property</Label>
+              <Label for="property">select your property</Label>
               {
                   property.map((item)=><Checkbox label={item.label} id={item.id} change={handleChange}/>)
               }
-            
+              {errors.property && (
+                  <ErrorMessage>{errors.property}</ErrorMessage>
+                )}
             </FormControl>
-            <Button onClick={handleSubmit} >Submit</Button>
+            
           </form>
+          
         </FormContainer>
+       
+        
       </Content>
+      <ButtonDiv>
+      <BackButton> back</BackButton>
+        <ContinueButton onClick={handleSubmit} >continue </ContinueButton>
+      </ButtonDiv>
+   
+      
     </Container>
   );
 }
