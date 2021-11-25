@@ -1,4 +1,5 @@
 import React from "react";
+import useForm from "./useForm";
 import {
   Container,
   Content,
@@ -6,11 +7,13 @@ import {
   FormContainer,
   FormControl,
   InlineDiv,
-  Input,
+  Input,ErrorMessage,
   InputDiv,Checkbox,
-  Label,Select
+  Label,Select,BackButton,ContinueButton,ButtonDiv
 } from "../../../form/FormComponent";
+
 const registred = ["Association", "Corporation", "Indivisual", "Partnership"];
+
 const property=[{
     id:'1',
     label:"car"}
@@ -22,7 +25,8 @@ const property=[{
         label:"computer"
     }
 ]
-export default function index() {
+export default function Index() {
+  const { handleChange,business, handleSubmit,errors } = useForm();
   return (
     <Container>
       <Content>
@@ -30,45 +34,55 @@ export default function index() {
         <FormContainer>
           <form>
             <FormControl>
-              <Label for="fName">How is your business registered ?</Label>
+              <Label for="registered">How is your business registered ?</Label>
               <InputDiv>
-                <Select required>
+                <Select required onChange={handleChange("registered")} id="registered">
                 {registred.map((data) => (
                   <option value={data}>{data}</option>
                 ))}
                </Select>
-                {/* {errors.firstName && (
-                  <ErrorMessage>{errors.firstName}</ErrorMessage>
-                )} */}
+             
               </InputDiv>
             </FormControl>
             <FormControl>
-              <Label for="fName">
+              <Label for="date">
                 What date would you like coverage to start ?
               </Label>
               <InputDiv>
                 <Input
-                  id="fName"
+                  id="date"
                   type="date"
-                  placeholder="Enter first name"
+                
                   required
-                  //   onChange={handleChange("firstName")}
+                    onChange={handleChange("date")}
                 />
-                {/* {errors.firstName && (
-                  <ErrorMessage>{errors.firstName}</ErrorMessage>
-                )} */}
+                {errors.date && (
+                  <ErrorMessage>{errors.date}</ErrorMessage>
+                )}
               </InputDiv>
             </FormControl>
             <FormControl>
-              <Label for="gender">select your property</Label>
+              <Label for="property">select your property</Label>
               {
-                  property.map((item)=><Checkbox label={item.label} id={item.id}/>)
+                  property.map((item)=><Checkbox label={item.label} id={item.id} change={handleChange}/>)
               }
-            
+              {errors.property && (
+                  <ErrorMessage>{errors.property}</ErrorMessage>
+                )}
             </FormControl>
+            
           </form>
+          
         </FormContainer>
+       
+        
       </Content>
+      <ButtonDiv>
+      <BackButton> back</BackButton>
+        <ContinueButton onClick={handleSubmit} >continue </ContinueButton>
+      </ButtonDiv>
+   
+      
     </Container>
   );
 }
