@@ -13,13 +13,20 @@ import StepProvider from "./component/pages/Quote/step/StepProvider";
 import Claim from "./component/pages/Claim";
 
 import Navbar from "./component/pages/Nav/Navbar";
-
+import styled from "styled-components"
 import Registration from "./component/pages/auth/Registration";
-
+const Scroll = styled.div`
+  overflow-y: scroll;
+  height: 90vh;
+  @media(max-width:850px){
+    height:auto;
+  }
+`;
 function App() {
   return (
     <div className="App">
       <Navbar />
+      <Scroll>
 
       <Route exact path="/">
         <Home />
@@ -46,7 +53,9 @@ function App() {
       <Route exact path="/forgotpassword">
         <Forgotpswd />
       </Route>
-      <Footer />
+      <Footer/>
+      </Scroll>
+    
     </div>
   );
 }
