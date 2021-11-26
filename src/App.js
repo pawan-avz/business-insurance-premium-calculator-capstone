@@ -4,22 +4,29 @@ import Home from "./component/pages/Home";
 import { Switch } from "react-router-dom";
 import { Route } from "react-router";
 import Login from "./component/pages/auth/Login";
-import Forgotpswd from "./component/pages/auth/Forgotpswd/Forgotpswd"
+import Forgotpswd from "./component/pages/auth/Forgotpswd/Forgotpswd";
 import Policies from "./component/pages/Policies";
 import Quote from "./component/pages/Quote";
 import Premium from "./component/pages/Premium";
+import StepProvider from "./component/pages/Quote/step/StepProvider";
 // import Registration from "./component/pages/Registration";
 import Claim from "./component/pages/Claim";
 
 import Navbar from "./component/pages/Nav/Navbar";
-
-
+import styled from "styled-components"
 import Registration from "./component/pages/auth/Registration";
-
+const Scroll = styled.div`
+  overflow-y: scroll;
+  height: 90vh;
+  @media(max-width:850px){
+    height:auto;
+  }
+`;
 function App() {
   return (
     <div className="App">
       <Navbar />
+      <Scroll>
 
       <Route exact path="/">
         <Home />
@@ -28,7 +35,9 @@ function App() {
         <Premium />
       </Route>
       <Route path="/quote">
-        <Quote />
+        <StepProvider>
+          <Quote />
+        </StepProvider>
       </Route>
 
       <Route exact path="/claim">
@@ -42,9 +51,11 @@ function App() {
         <Login />
       </Route>
       <Route exact path="/forgotpassword">
-       <Forgotpswd />
+        <Forgotpswd />
       </Route>
-      <Footer />
+      <Footer/>
+      </Scroll>
+    
     </div>
   );
 }

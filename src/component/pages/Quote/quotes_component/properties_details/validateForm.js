@@ -1,27 +1,27 @@
-export default function validateForm(values) {
-    console.log("form");
-    console.log(values)
-    let errors = {};
-    for(const property in values){
-        console.log(property)
-    if (!property.brandName.trim()) {
-       
-      errors[property].brandName = "brand name is required";
-    } 
-    if (!property["model"].trim()) {
-        errors[property].model= "model is required";
-    } 
-    if (!property["rate"].trim()) {
-        errors[property].rate = "rate is required";
-    } 
-    if (!property["date"].trim()) {
-        errors[property].date = "date is required";
-      } 
+export default function validateForm(values,error) {
+  let newerrors =error;
 
+  let flag=false;
+  
+  for (const property in values) {
+    
+    if (!values[property].brandName.trim()) {
+      flag=true;
+      newerrors[property].brandName = `${property} brand name is required *`;
     }
-  
-   
-   
-    return errors;
+    if (!values[property].model.trim()) {
+      flag=true;
+      newerrors[property].model = `${property}  model is required *`;
+    }
+    if (!values[property].rate.trim()) {
+      flag=true;
+      newerrors[property].rate = `${property}  rate is required *`;
+    }
+    if (!values[property].date.trim()) {
+      flag=true;
+      newerrors[property].date = `${property}  date is required *`;
+    }
   }
-  
+
+  return {newerrors,flag};
+}

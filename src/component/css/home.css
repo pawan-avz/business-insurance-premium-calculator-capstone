@@ -28,13 +28,15 @@
 
 .card_container {
   width: 96%;
-  margin: auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin:30px auto;
+  margin-bottom: 100px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
-
+.image{
+  width:100%;
+}
 .plans {
   width: 50%;
   margin: auto;
@@ -55,6 +57,7 @@
   text-align: center;
   margin-bottom: 40px;
 }
+
 
 @media only screen and (max-width:600px)
 {
@@ -83,9 +86,7 @@
     margin-left: 20px;
     width: 80%;
   }
-  img {
-    width: 200px;
-  }
+  
   .homeIntro{
     display: flex;
     flex-direction: column;
