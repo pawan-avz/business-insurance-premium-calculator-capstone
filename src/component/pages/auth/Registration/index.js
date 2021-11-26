@@ -2,6 +2,7 @@
 import React from "react";
 import validateInfo from "./validateInfo";
 import useForm from "./useForm";
+import styled from "styled-components"
 import { NavLink, useHistory } from "react-router-dom";
 import {
   Container,
@@ -14,13 +15,25 @@ import {
   InlineDiv,SubmitButton,
   ErrorMessage,Formfooter,Input
 } from "../../form/FormComponent";
+const Scroll = styled.div`
+  overflow-y: scroll;
+  height: 550px;
+`;
+const Div=styled.div`
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+`;
 
 export default function Index() {
   const { handleChange, user, errors, handleSubmit } = useForm(validateInfo);
 
   return (
+    <Div>
     <Container>
       <Content>
+        <Scroll>
         <FormHeading>Registration</FormHeading>
 
         <FormContainer>
@@ -121,7 +134,9 @@ export default function Index() {
             </Formfooter>
           </form>
         </FormContainer>
+        </Scroll>
       </Content>
     </Container>
+   </Div>
   );
 }

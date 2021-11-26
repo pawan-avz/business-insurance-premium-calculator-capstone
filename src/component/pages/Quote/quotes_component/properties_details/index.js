@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-
+import { NavLink, Switch } from "react-router-dom";
+import StepContext from "../../step/StepContext";
 import {
   Container,
   Content,
@@ -27,6 +28,8 @@ const Scroll = styled.div`
 export default function Index() {
   let arr = JSON.parse(localStorage.getItem("selected_assets"));
   const { handleChange, business, handleSubmit, errors } = useForm();
+  const step=React.useContext(StepContext);
+  const {changeBack,changeNext,steps}=step;
   return (
     <Container>
       <Content>
@@ -100,7 +103,11 @@ export default function Index() {
         </Scroll>
       </Content>
       <ButtonDiv>
-        <BackButton> back</BackButton>
+      <NavLink to={`/quote/form3`}>
+      <BackButton onClick={changeBack}> back</BackButton>
+              
+      </NavLink>
+   
         <ContinueButton onClick={handleSubmit}>continue </ContinueButton>
       </ButtonDiv>
     </Container>

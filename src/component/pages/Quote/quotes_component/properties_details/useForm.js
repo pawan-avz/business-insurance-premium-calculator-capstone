@@ -1,9 +1,10 @@
 import React from "react";
 import validateForm from "./validateForm";
-
+import StepContext from "../../step/StepContext";
 const useForm = (validate) => {
   const [property, setProperty] = React.useState({});
-
+  const step=React.useContext(StepContext);
+  const {changeBack,changeNext,steps}=step;
   const [errors, setErrors] = React.useState({});
 
   const handleChange = (key) =>(key1)=> (event) => {
@@ -26,6 +27,7 @@ const useForm = (validate) => {
     console.log(property)
     setErrors(validateForm(property));
     console.log(errors)
+    changeNext()
 
   };
   return {handleChange,handleSubmit,errors,property};

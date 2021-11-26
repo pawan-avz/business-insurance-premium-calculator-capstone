@@ -9,21 +9,15 @@ import { Route } from "react-router";
 import { NavLink, Switch } from "react-router-dom";
 import "../../css/quotes.css";
 import Form5 from "./quotes_component/Form5";
-
+import StepContext from "./step/StepContext";
 const Quote = () => {
   const [state, setState] = useState([]);
-  const [back, setBack] = useState(0);
-  const [next, setNext] = useState(2);
+  const step=React.useContext(StepContext);
+   
+ 
+  const {changeBack,changeNext,steps}=step;
+  console.log(step)
 
-  const changeNext = () => {
-    setBack(back + 1);
-    setNext(next + 1);
-  };
-
-  const changeBack = () => {
-    setBack(back - 1);
-    setNext(next - 1);
-  };
   return (
     <>
       <div className="quotes_container">
@@ -39,11 +33,11 @@ const Quote = () => {
             ].map((data, index) => (
               <div
                 key={index}
-                className={next - 2 === index ? "step step-active " : "step "}
+                className={steps- 2 === index ? "step step-active " : "step "}
               >
                 <div>
                   <div className="circle">
-                    {next - 2 > index ? "✔︎" : ++index}
+                    {steps- 2 > index ? "✔︎" : ++index}
                   </div>
                 </div>
                 <div>
@@ -52,9 +46,9 @@ const Quote = () => {
               </div>
             ))}
             {/* 4th step */}
-            <div className={next - 2 === 6 ? "step step-active" : "step"}>
+            <div className={steps- 2 === 6 ? "step step-active" : "step"}>
               <div>
-                <div className="circle4">{next - 2 > 3 ? "✔︎" : 7}</div>
+                <div className="circle4">{steps- 2 > 3 ? "✔︎" : 7}</div>
               </div>
               <div>
                 <div className="title">Finish</div>
@@ -63,22 +57,7 @@ const Quote = () => {
           </div>
           {/* 4th step end */}
 
-          <div className="next_back">
-            {back !== 0 && (
-              <div className="back">
-                <NavLink to={`/quote/form${back}`}>
-                  <button onClick={changeBack}>Back</button>
-                </NavLink>
-              </div>
-            )}
-            {next !== 8 && (
-              <div className="next">
-                <NavLink to={`/quote/form${next}`}>
-                  <button onClick={changeNext}>Continue</button>
-                </NavLink>
-              </div>
-            )}
-          </div>
+          
         </div>
 
         <div className="right_side">
@@ -90,7 +69,6 @@ const Quote = () => {
               <Form2 />
             </Route>
             <Route exact path="/quote/form3">
-    
               <YourBusiness/>
             </Route>
             <Route exact path="/quote/form4">

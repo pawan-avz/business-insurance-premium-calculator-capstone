@@ -8,6 +8,8 @@ const Nav = styled.nav`
   heigth: 55px;
   border-bottom: 2px solid #f1f1f1;
   padding: 0 20px;
+  margin:0;
+  overflow:hidden;
   display: flex;
   justify-content: space-between;
   align-items: center;

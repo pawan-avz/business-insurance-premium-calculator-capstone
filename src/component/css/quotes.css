@@ -1,7 +1,15 @@
+body{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+
 .quotes_container {
   box-sizing: border-box;
   width: 100%;
   display: flex;
+  height:calc(100vh - 55px);
 }
 
 .left_side {
@@ -15,10 +23,16 @@
 
 .right_side {
   width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+.step{
+  margin: 2rem 0;
+}
 /* media query for quotes */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 850px) {
   .quotes_container {
     flex-direction: column;
   }
@@ -29,8 +43,10 @@
     align-items: center;
   }
   .left_side {
-    width: 100%;
-    display: inline-block;
+    width:100%;
+    flex-direction: row;
+
+
   }
   .right_side {
     width: 100%;
@@ -42,8 +58,12 @@
     /* display: none; */
     align-items: flex-end !important;
   }
+  .step{
+    margin:2rem 0;
+    width: 50px;
+  }
   .step > div {
-    margin-left: 0.5rem;
+    margin:0 2rem;
     padding-left: 1em;
   }
 }
@@ -84,9 +104,6 @@
   color: gray;
 }
 
-.step {
-  margin-top: 1.5em;
-}
 /* .step > div:first-child {
   position: static;
   height: 0;
