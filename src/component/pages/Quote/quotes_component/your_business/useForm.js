@@ -37,7 +37,7 @@ const useForm = () => {
    
     if(Object.keys(error).length === 0 && business.property.length>0){
       changeNext()
-      localStorage.setItem("selected_assets", JSON.stringify(business.property));
+      localStorage.setItem("selected_business", JSON.stringify(business.property));
       history.push(`/quote/form4`);
     }
     
