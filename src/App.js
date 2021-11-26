@@ -10,7 +10,7 @@ import Quote from "./component/pages/Quote";
 import Premium from "./component/pages/Premium";
 import StepProvider from "./component/pages/Quote/step/StepProvider";
 // import Registration from "./component/pages/Registration";
-import Claim from "./component/pages/Claim";
+import Claim from "./component/pages/claim"
 
 import Navbar from "./component/pages/Nav/Navbar";
 import styled from "styled-components"
