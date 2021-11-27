@@ -9,6 +9,7 @@ import { Route } from "react-router";
 import { NavLink, Switch } from "react-router-dom";
 import "../../css/quotes.css";
 import Form5 from "./quotes_component/Form5";
+import Aboutyou from "./quotes_component/about_you"
 
 const Quote = () => {
   const [state, setState] = useState([]);
@@ -87,7 +88,7 @@ const Quote = () => {
               <Form1 changeNext={changeNext} />
             </Route>
             <Route exact path="/quote/form2">
-              <Form2 />
+           <Aboutyou/>
             </Route>
             <Route exact path="/quote/form3">
     
