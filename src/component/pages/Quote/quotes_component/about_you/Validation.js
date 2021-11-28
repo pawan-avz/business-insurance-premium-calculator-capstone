@@ -1,45 +1,50 @@
 
 
 const Validation =(values) =>{
-    let errors ={};
+    let newerrors ={};
+    let invalid=false;
  
     if(!values.name){
-        errors.name="name is required *";
+        newerrors.name="name is required *";
     }
 
     if(!values.email){
-        errors.email="Email is required *" ;
+        newerrors.email="Email is required *" ;
     }else if(!/^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/.test(values.email)){
-        errors.email = "Email is not valid *"
+        newerrors.email = "Email is not valid *"
     }
     
     if(!values.mobile){
-        errors.mobile="Mobile number is required *"
-    }else if(values.mobile !== 10){
-        errors.mobile="Mobile number is invalid *"
+        newerrors.mobile="Mobile number is required *"
+    }else if(!(/^\d{10}$/.test(values.mobile))){
+
+        newerrors.mobile="Mobile number is invalid *"
     }
 
     if(!values.address){
-        errors.address="Address is required *"
+        newerrors.address="Address is required *"
     }
     
     if(!values.dob){
-        errors.dob="Date of birth is required *"
+        newerrors.dob="Date of birth is required *"
     }
 
     if(!values.city){
-        errors.city="city is required *"
+        newerrors.city="city is required *"
     }
 
     if(!values.state){
-        errors.state="state is required *"
+        newerrors.state="state is required *"
     }
 
     if(!values.pincode){
-        errors.pincode="pincode is required *"
+        newerrors.pincode="pincode is required *"
     }
-
-    return errors;
+    
+    if(Object.keys(newerrors).length!==0){
+       invalid=true;
+    }
+    return {newerrors,invalid};
  }
  
  export default Validation;

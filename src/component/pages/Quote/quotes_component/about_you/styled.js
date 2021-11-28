@@ -10,6 +10,10 @@ const Container = styled.div`
   
 
 `;
+const Scroll = styled.div`
+  overflow-y: scroll;
+  height: 500px;
+`;
 const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -49,22 +53,34 @@ const FormContainer = styled.div`
   }
 `;
 const ContinueButton = styled.button`
-  background-color: rgb(6, 115, 165);
+  background-color:white;
+  border: 1px solid rgb(6, 115, 165);
   padding: 10px 20px;
   width:100px;
-  color:white;
+  color: rgb(6, 115, 165);
   border-radius:6px;
-  border:none;
+  cursor:pointer;
   margin:0 20px;
+  &:hover{
+    background-color:rgb(6, 115, 165);
+    color:white;
+
+  }
 `;
 const BackButton = styled.button`
-  background-color: crimson;
+  background-color:white;
+  border:1px solid crimson;
   padding: 10px 30px;
   width:100px;
-  color:white;
+  color:crimson;
   border-radius:6px;
   margin:0 20px;
-  border:none;
+  cursor:pointer;
+  &:hover{
+    color:white;
+    background-color:crimson;
+  }
+
 `;
 const ButtonDiv=styled.div`
   display: flex;
@@ -82,5 +98,5 @@ export {
     ContinueButton,
     BackButton,
     ButtonDiv
-
+   ,Scroll
 };

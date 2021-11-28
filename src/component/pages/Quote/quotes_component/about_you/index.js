@@ -1,15 +1,20 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
+import StepContext from '../../step/StepContext';
+import { NavLink ,useHistory} from 'react-router-dom';
 import {
     Container,
     Content,
     FormHeading,
     FormContainer,
     ButtonDiv,
-    BackButton,
+    BackButton,Scroll,
     ContinueButton
         } from './styled'
 import Validation from "./Validation"        
 export default function Index() {
+    let history=useHistory()
+    const step=React.useContext(StepContext);
+    const {changeBack,changeNext,steps}=step; 
     const [errors, setErrors] = useState({})
     const [values, setValues] = useState({
         name:"",
@@ -31,8 +36,17 @@ export default function Index() {
     const handlesubmits =(event) =>{
 
         event.preventDefault();
-      
-        setErrors(Validation(values));
+        const {newerrors,invalid}=Validation(values);
+        setErrors(newerrors);
+       
+       
+        if(!invalid){
+            changeNext();
+            console.log("submit3");
+            history.push("/quote/form3")
+
+        }
+
     }
 
    
@@ -41,6 +55,8 @@ export default function Index() {
       <Container>
           <Content>
           <FormHeading>About You</FormHeading>
+          <Scroll>
+
           <FormContainer>
               <form>
                      <label for="name">Full name :</label>
@@ -117,10 +133,12 @@ export default function Index() {
               </form>
 
           </FormContainer>
-          
+          </Scroll>
           </Content>
           <ButtonDiv>
-            <BackButton> back</BackButton>
+          <NavLink to={`/quote/form1`}>
+          <BackButton onClick={changeBack}> back</BackButton>
+        </NavLink>
             <ContinueButton onClick={handlesubmits} >continue </ContinueButton>
           </ButtonDiv> 
       </Container>
