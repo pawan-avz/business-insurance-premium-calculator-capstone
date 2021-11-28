@@ -13,15 +13,22 @@ import {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+
 `;
 const Row = styled.div`
   display: flex;
   flex-direction: row;
+  @media(max-width:700px){
+    flex-direction:column-reverse;
+  }
 `;
 const Column = styled.div`
   display: flex;
   width: 50%;
   flex-direction: column;
+  @media(max-width:700px){
+    width:100%;
+  }
 `;
 
 const Button = styled.button`
