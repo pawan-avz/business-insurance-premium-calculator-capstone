@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../css/nav.css";
 import { NavLink } from "react-router-dom";
 import userIcon from "../images/user.png";
+
 const Nav = () => {
   const [userName, setUserName] = useState(
     JSON.stringify(localStorage.getItem("userName"))
@@ -41,6 +42,10 @@ const Nav = () => {
           }
           <NavLink to="/claim">
             <li>Claim</li>
+          </NavLink>
+
+          <NavLink to='/reset_password'>    
+            <li>Reset Passsword</li>
           </NavLink>
 
           <NavLink

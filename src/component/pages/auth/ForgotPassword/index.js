@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-// import user from './data'
 import {Container,
     InnerContainer,
     H2,
@@ -9,7 +8,7 @@ import {Container,
 } from './ResetStyle'
 
 export default function Reset() {
-    const currPass = "asfghjkl";
+    const currPass = "asdfghjkl";
     const [password, setPassword] = useState("");
     // console.log(password);
     const [confirmPassErr, setConfirmPassErr] = useState("");
@@ -28,14 +27,27 @@ export default function Reset() {
             setPasswordError("Password should be more than 6 characters")
         }
 
+        else if(!/[A-Z]/.test(newPass)) {
+            setPasswordError("Password must contain Uppercase letter")
+        }
+
+        else if(!/[0-9]/.test(newPass)) {
+            setPasswordError("Passsword must contain a number")
+        }
+
+        else if(!/\W/.test(newPass)) {
+            setPasswordError("Password must contain a Special character")
+        }
+
         else if (reEnterPass != newPass) {
             setPasswordError("Passwords do not match")
         }
 
         else {
+            console.log("Password successfully changed");
             // localStorage.setItem("userDetails", JSON.stringify(data));
-            // setConfirmPassErr("")
-            // setPasswordError("")
+            setConfirmPassErr("")
+            setPasswordError("")
             // setNewPass("")
             // setPassword("")
             // setReEnterPass("")

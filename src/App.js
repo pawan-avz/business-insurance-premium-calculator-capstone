@@ -10,6 +10,7 @@ import Premium from "./component/pages/Premium";
 // import Registration from "./component/pages/Registration";
 import Claim from "./component/pages/Claim";
 import Registration from "./component/pages/auth/Registration";
+import Reset from './component/pages/auth/ForgotPassword'
 function App() {
   return (
     <div className="App">
@@ -36,6 +37,10 @@ function App() {
         <Login />
       </Route>
 
+      <Route exact path='/reset_password'>
+        <Reset />
+      </Route>
+      
       <Footer />
     </div>
   );
