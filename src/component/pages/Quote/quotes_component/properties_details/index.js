@@ -1,6 +1,7 @@
 import React ,{useState}from "react";
 import styled from "styled-components";
-
+import { NavLink, Switch } from "react-router-dom";
+import StepContext from "../../step/StepContext";
 import {
   Container,
   Content,
@@ -25,8 +26,34 @@ const Scroll = styled.div`
 `;
 
 export default function Index() {
-  let arr = JSON.parse(localStorage.getItem("selected_assets"));
-  const { handleChange, business, handleSubmit, errors } = useForm();
+  const { handleChange, properties, handleSubmit, errors } = useForm();
+  let field;
+  const step = React.useContext(StepContext);
+  const { changeBack, changeNext, steps } = step;
+  let arr = JSON.parse(localStorage.getItem("selected_business"));
+  const inputData = [
+    {
+      label: "Brand name*",
+      id: "brandName",
+      type: "text",
+    },
+    {
+      label: "Model*",
+      id: "model",
+      type: "text",
+    },
+    {
+      label: "Purchase rate*",
+      id: "rate",
+      type: "number",
+    },
+    {
+      label: "Purchase date*",
+      id: "date",
+      type: "date",
+    },
+  ];
+
   return (
     <Container>
       <Content>
@@ -55,41 +82,21 @@ export default function Index() {
 
                   {arr &&
                     arr.find((data) => data === property) &&
-                    [
-                      {
-                        label: "Brand name*",
-                        id: "brandName",
-                        type: "text",
-                      },
-                      {
-                        label: "Model*",
-                        id: "model",
-                        type: "text",
-                      },
-                      {
-                        label: "Purchase rate*",
-                        id: "rate",
-                        type: "number",
-                      },
-                      {
-                        label: "Purchase date*",
-                        id: "date",
-                        type: "date",
-                      },
-                    ].map((data, index) => (
+                    inputData.map((data, index) => (
                       <FormControl>
                         <Label for={data.id}>{data.label}</Label>
                         <InputDiv>
                           <Input
-                          required
+                            required
                             type={data.type}
                             placeholder={data.label}
                             onChange={handleChange(property)(data.id)}
                           />
-                       
-                          {/* {business[property][data.id]===undefined? (
-                            <ErrorMessage>this field is required</ErrorMessage>
-                          ):null} */}
+                          {errors[property][data.id] && (
+                            <ErrorMessage>
+                              {errors[property][data.id]}
+                            </ErrorMessage>
+                          )}
                         </InputDiv>
                       </FormControl>
                     ))}
@@ -100,7 +107,10 @@ export default function Index() {
         </Scroll>
       </Content>
       <ButtonDiv>
-        <BackButton> back</BackButton>
+        <NavLink to={`/quote/form3`}>
+          <BackButton onClick={changeBack}> back</BackButton>
+        </NavLink>
+
         <ContinueButton onClick={handleSubmit}>continue </ContinueButton>
       </ButtonDiv>
     </Container>

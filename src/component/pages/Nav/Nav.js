@@ -71,6 +71,7 @@ const Ul = styled.ul`
     justify-content: space-around;
     align-items: center;
     flex-flow: row nowrap;
+    z-index:19;
     a{
       text-decoration: none
     }

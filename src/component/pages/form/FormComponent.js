@@ -4,20 +4,24 @@ import styled from "styled-components";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 800px;
+
   justify-content: center;
   align-items: center;
 `;
 const Content = styled.div`
   display: flex;
   flex-direction: column;
+  
   width: 600px;
   border-radius: 5px;
-
   border: 1px solid #f1f1f1;
+  @media(max-width:620px){
+    width:-webkit-fill-available;
+  }
 `;
 
 const Input = styled.input`
+  
   padding: 14px;
   border-radius: 3px;
   border: 1px solid #ccc;
