@@ -17,11 +17,15 @@ const Scroll = styled.div`
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  width: 700px;
+  width: 600px;
   border-radius: 5px;
 //   background-color: rgb(241, 241, 241);
   border: 1px solid #f1f1f1;
   margin-top:5%;
+  @media(maxwidth:700px){
+      width:-webkit-fill-available;
+  }
+  
 `;
 const FormHeading = styled.p`
   // background-color: rgb(241, 241, 241);
@@ -34,23 +38,15 @@ const FormHeading = styled.p`
 `;
 const FormContainer = styled.div`
   margin: 30px;
-  input {
-    padding:10px 10px;
-    width:70%;
-    margin:15px 0px;
-  }
-  label{
-    padding-right:20px;
-    display: inline-block;
-    width: 110px; 
-    font-size:18px;
-  }
+
+  
   P{
       text-align:center;
       font-size:16px;
       margin:0;
       color:red;
   }
+  
 `;
 const ContinueButton = styled.button`
   background-color:white;
