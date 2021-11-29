@@ -20,9 +20,9 @@ const Form1 = (props) => {
     "Commercial auto liability",
     "Worker's compensation",
   ];
-  React.useEffect(()=>{
-      resetStep()
-  })
+  // React.useEffect(()=>{
+  //     resetStep()
+  // })
   return (
     <>
       <div className="info_form1">
@@ -71,3 +71,6 @@ const Form1 = (props) => {
 };
 
 export default Form1;
+
+
+
