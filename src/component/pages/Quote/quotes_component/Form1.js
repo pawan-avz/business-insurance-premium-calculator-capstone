@@ -4,7 +4,8 @@ import "../../../css/form1.css";
 import StepContext from "../step/StepContext";
 const Form1 = (props) => {
   const step=React.useContext(StepContext);
-  const {changeBack,changeNext,steps,resetStep}=step;  
+  const {steps,changeBack,changeNext,resetStep}=step;  
+  
   const typeOfInsurance = [
     "Select type of insurance",
     "Auto insurance",
@@ -20,9 +21,7 @@ const Form1 = (props) => {
     "Commercial auto liability",
     "Worker's compensation",
   ];
-  React.useEffect(()=>{
-      resetStep()
-  })
+
   return (
     <>
       <div className="info_form1">
