@@ -19,6 +19,9 @@ const [state, setstate] = React.useState(2);
       }
   
   }
+  const resetStep=()=>{
+      setstate(2)
+  }
 
    React.useEffect(()=>{
        setstate(2)
@@ -28,7 +31,8 @@ const [state, setstate] = React.useState(2);
        <StepContext.Provider value={{
            steps:state,
            changeBack,
-           changeNext
+           changeNext,
+           resetStep
        }}>
            {children}
        </StepContext.Provider>

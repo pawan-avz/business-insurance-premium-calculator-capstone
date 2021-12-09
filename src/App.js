@@ -15,6 +15,8 @@ import Claim from "./component/pages/claim";
 import Navbar from "./component/pages/Nav/Navbar";
 import styled from "styled-components";
 import Registration from "./component/pages/auth/Registration";
+
+import Reset from './component/pages/auth/ForgotPassword'
 const Scroll = styled.div`
   overflow-y: scroll;
   height: 90vh;
@@ -22,6 +24,7 @@ const Scroll = styled.div`
     height: auto;
   }
 `;
+
 function App() {
   return (
     <div className="App">
@@ -43,17 +46,30 @@ function App() {
           <Claim />
         </Route>
 
-        <Route exact path="/registration">
-          <Registration />
-        </Route>
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <Route exact path="/forgotpassword">
-          <Forgotpswd />
-        </Route>
-        {/* <Footer /> */}
+      <Route exact path="/claim">
+        <Claim />
+      </Route>
+
+      <Route exact path="/registration">
+        <Registration />
+      </Route>
+      <Route exact path="/login">
+        <Login />
+      </Route>
+
+
+      <Route exact path='/reset_password'>
+        <Reset />
+      </Route>
+      
+     
+
+      <Route exact path="/forgotpassword">
+        <Forgotpswd />
+      </Route>
+      <Footer/>
       </Scroll>
+    
     </div>
   );
 }
