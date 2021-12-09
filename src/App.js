@@ -10,16 +10,16 @@ import Quote from "./component/pages/Quote";
 import Premium from "./component/pages/Premium";
 import StepProvider from "./component/pages/Quote/step/StepProvider";
 // import Registration from "./component/pages/Registration";
-import Claim from "./component/pages/claim"
+import Claim from "./component/pages/claim";
 
 import Navbar from "./component/pages/Nav/Navbar";
-import styled from "styled-components"
+import styled from "styled-components";
 import Registration from "./component/pages/auth/Registration";
 const Scroll = styled.div`
   overflow-y: scroll;
   height: 90vh;
-  @media(max-width:850px){
-    height:auto;
+  @media (max-width: 850px) {
+    height: auto;
   }
 `;
 function App() {
@@ -27,35 +27,33 @@ function App() {
     <div className="App">
       <Navbar />
       <Scroll>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/premium">
+          <Premium />
+        </Route>
+        <Route path="/quote">
+          <StepProvider>
+            <Quote />
+          </StepProvider>
+        </Route>
 
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route exact path="/premium">
-        <Premium />
-      </Route>
-      <Route path="/quote">
-        <StepProvider>
-          <Quote />
-        </StepProvider>
-      </Route>
+        <Route exact path="/claim">
+          <Claim />
+        </Route>
 
-      <Route exact path="/claim">
-        <Claim />
-      </Route>
-
-      <Route exact path="/registration">
-        <Registration />
-      </Route>
-      <Route exact path="/login">
-        <Login />
-      </Route>
-      <Route exact path="/forgotpassword">
-        <Forgotpswd />
-      </Route>
-      <Footer/>
+        <Route exact path="/registration">
+          <Registration />
+        </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/forgotpassword">
+          <Forgotpswd />
+        </Route>
+        {/* <Footer /> */}
       </Scroll>
-    
     </div>
   );
 }
