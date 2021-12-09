@@ -9,13 +9,13 @@ import { Route } from "react-router";
 import { NavLink, Switch } from "react-router-dom";
 import "../../css/quotes.css";
 import Form5 from "./quotes_component/Form5";
-// <<<<<<< HEAD
+import Premium from "./quotes_component/premium"
+
 import Aboutyou from "./quotes_component/about_you"
 
-// =======
+
 import StepContext from "./step/StepContext";
 
-// >>>>>>> 3d70a25481ffe5179ad6048150058d2359222e05
 
 const Quote = () => {
   const [state, setState] = useState([]);
