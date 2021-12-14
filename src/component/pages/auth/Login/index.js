@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 // import "../css/login.css";
+import styled from "styled-components";
 import axios from "axios";
 import {
   Container,
@@ -11,6 +12,10 @@ import {
   Button,
   LoginFooter,
 } from "./LoginStyle";
+const SuccessMessage = styled.p`
+  color: green;
+  text-align:center;
+`;
 
 const Login = () => {
   const history = useHistory();
@@ -116,6 +121,7 @@ const Login = () => {
     <Container>
       <InnerContainer>
         <H2>Log in</H2>
+        <SuccessMessage>{history.location.state}</SuccessMessage>
         <form method="POST">
           {formData.map((data, index) => (
             <LableAndInput>
