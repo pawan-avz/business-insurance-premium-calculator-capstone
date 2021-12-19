@@ -1,35 +1,47 @@
 export default function validateInfo(values) {
-
-  let errors = {};
+  let newerrors = {};
+  let valid = true;
   if (!values.firstName.trim()) {
-    errors.firstName = "first name is required";
+    valid = false;
+
+    newerrors.firstName = "first name is required *";
   } else if (!/^[a-zA-Z ]+$/.test(values.firstName)) {
-    errors.firstName = "first name should contains alphabet";
+    valid = false;
+    newerrors.firstName = "first name should contains alphabet *";
   }
   if (!values.lastName.trim()) {
-    errors.lastName = "last name is required";
+    valid = false;
+    newerrors.lastName = "last name is required *";
   } else if (!/^[a-zA-Z ]+$/.test(values.lastName)) {
-    errors.lastName = "first name should contains alphabet";
+    valid = false;
+    newerrors.lastName = "first name should contains alphabet *";
   }
 
   if (!values.email) {
-    errors.email = "Email required";
+    valid = false;
+    newerrors.email = "Email required *";
   } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-    errors.email = "Email address is invalid";
+    valid = false;
+    newerrors.email = "Email address is invalid *";
   }
-  if (!values.password1) {
-    errors.password1 = "Password is required";
-  } else if (values.password1.length < 6) {
-    errors.password1 = "Password needs to be 6 characters or more";
+  if (!values.password) {
+    valid = false;
+    newerrors.password = "Password is required *";
+  } else if (values.password.length < 6) {
+    valid = false;
+    newerrors.password = "Password needs to be 6 characters or more *";
   }
 
   if (!values.password2) {
-    errors.password2 = "Password is required";
+    valid = false;
+    newerrors.password2 = "Password is required *";
   } else if (values.password2 !== values.password) {
-    errors.password2 = "Passwords do not match";
+    valid = false;
+    newerrors.password2 = "Passwords do not match *";
   }
-  if(!values.gender){
-    errors.gender= "gender is required";
+  if (!values.gender) {
+    valid = false;
+    newerrors.gender = "gender is required *";
   }
-  return errors;
+  return { newerrors, valid };
 }
