@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
+import LoginWithGoogle from "./Oauth2/LoginWithGoogle";
 // import "../css/login.css";
 import axios from "axios";
 import {
@@ -10,6 +11,8 @@ import {
   ButtonContainer,
   Button,
   LoginFooter,
+  SocialLogin,
+  SocialBtn,
 } from "./LoginStyle";
 
 const Login = () => {
@@ -63,35 +66,28 @@ const Login = () => {
     }
     return status;
   };
-  //post fetch function
+
   const postFetch = async () => {
-    try {
-      const request = await axios.post("/login", {
-        headers: {
-          "Content-type": "application/json",
-        },
-        method: "POST",
-        body: { state }, //post login creadential
+    await axios
+      .post("http://localhost:8080/login", state)
+      .then((response) => {
+        console.log(response);
+        setLoginMessage("login in successfully, Loading....");
+        setTimeout(() => history.push("/dashboard"), 2000);
+      })
+      .catch((errors) => {
+        setLoginMessage("login failed");
+        setState({ email: "", password: "" });
+        console.log(errors);
       });
-      if (request.status === 200) {
-        setLoginMessage("Loged in successfully");
-        history.push("/dashboard"); //redirect to dashboard
-      } else {
-        setLoginMessage("Login failed");
-      }
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   // function invoke when login button clicked
   const postLoginCredential = () => {
     if (loginController && validateEmpty()) {
       postFetch();
-      history.push("/"); //for test
     }
   };
-
   // form input type, name placeholders ...
   const formData = [
     {
@@ -116,6 +112,26 @@ const Login = () => {
     <Container>
       <InnerContainer>
         <H2>Log in</H2>
+        <LoginWithGoogle />
+        <LableAndInput>
+          {loginMessage !== "" && (
+            <p
+              style={{
+                // color: "#fff",
+                //marginLeft: "25px",
+                backgroundColor:
+                  loginMessage === "login failed"
+                    ? "rgba(256,200,200,1)"
+                    : "rgba(200,256,200,1)",
+                padding: "10px",
+                borderRadius: "5px",
+                textAlign: "center",
+              }}
+            >
+              {loginMessage}
+            </p>
+          )}
+        </LableAndInput>
         <form method="POST">
           {formData.map((data, index) => (
             <LableAndInput>

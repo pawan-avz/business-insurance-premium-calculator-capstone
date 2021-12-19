@@ -91,3 +91,42 @@ export const LoginFooter = styled.div`
     }
   }
 `;
+
+export const SocialLogin = styled.div`
+  width: 85%;
+  margin: auto;
+  text-align: center;
+  padding: 6px;
+  background-color: transparent;
+  outline-color: initial;
+  border: 2px solid rgba(222, 220, 217, 0.65);
+  border-radius: 5px;
+`;
+
+export const SocialBtn = styled.a`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-image: none;
+  color: rgb(61, 66, 68);
+  text-decoration: none;
+  cursor: pointer;
+`;
+
+export const OrSeprator = styled.div`
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  position: relative;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 1em;
+`;
+
+export const OrText = styled.span`
+  position: absolute;
+  left: 46%;
+  top: 0;
+  background: #fff;
+  padding: 10px;
+`;
