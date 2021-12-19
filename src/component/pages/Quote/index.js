@@ -9,13 +9,11 @@ import { Route } from "react-router";
 import { NavLink, Switch } from "react-router-dom";
 import "../../css/quotes.css";
 import Form5 from "./quotes_component/Form5";
-import Premium from "./quotes_component/premium"
+import Premium from "./quotes_component/premium/Index";
 
-import Aboutyou from "./quotes_component/about_you"
-
+import Aboutyou from "./quotes_component/about_you";
 
 import StepContext from "./step/StepContext";
-
 
 const Quote = () => {
   const [state, setState] = useState([]);
@@ -70,7 +68,7 @@ const Quote = () => {
               <Form1 changeNext={changeNext} />
             </Route>
             <Route exact path="/quote/form2">
-           <Aboutyou/>
+              <Aboutyou />
             </Route>
             <Route exact path="/quote/form3">
               <YourBusiness />
