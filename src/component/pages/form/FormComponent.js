@@ -94,6 +94,12 @@ const ErrorMessage = styled.p`
   font-size: 12px;
   text-align: center;
 `;
+
+const SuccessMessage = styled.p`
+  color: green;
+  font-size: 12px;
+  text-align: center;
+`;
 const Select = styled.select`
   width: 100%;
   height: 46px;
@@ -188,5 +194,5 @@ export {
   SubmitButton,
   Select,
   Checkbox,
-  ContinueButton,BackButton,ButtonDiv
+  ContinueButton,BackButton,ButtonDiv,SuccessMessage
 };
