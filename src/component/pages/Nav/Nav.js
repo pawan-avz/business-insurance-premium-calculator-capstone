@@ -65,6 +65,7 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 import styled from 'styled-components';
 
+
 const Ul = styled.ul`
     list-style: none;
     display: flex;
@@ -111,7 +112,7 @@ const Ul = styled.ul`
 
 const Nav = ({ open }) => {
     return(
-      <Ul open={open}>
+      <Ul open={open}> 
         <NavLink to="/"><li>Home</li> </NavLink>
         <NavLink to="/login"><li>Login</li></NavLink>
         <NavLink to="/claim"><li>Claim</li></NavLink>
