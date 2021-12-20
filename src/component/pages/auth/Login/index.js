@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { NavLink, useHistory, Route } from "react-router-dom";
 import LoginWithGoogle from "./Oauth2/LoginWithGoogle";
-import Dashboard from "../../Dashboard/Index";
+import Dashboard from "../../Dashboard";
 // import "../css/login.css";
+import styled from "styled-components";
 import axios from "axios";
 import {
   Container,
@@ -17,6 +18,10 @@ import {
   OrSeprator,
   OrText,
 } from "./LoginStyle";
+const SuccessMessage = styled.p`
+  color: green;
+  text-align: center;
+`;
 
 const Login = () => {
   const history = useHistory();
@@ -140,6 +145,9 @@ const Login = () => {
             </p>
           )}
         </LableAndInput>
+
+        <SuccessMessage>{history.location.state}</SuccessMessage>
+
         <form method="POST">
           {formData.map((data, index) => (
             <LableAndInput>

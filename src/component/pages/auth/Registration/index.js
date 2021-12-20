@@ -2,6 +2,7 @@
 import React from "react";
 import validateInfo from "./validateInfo";
 import useForm from "./useForm";
+import styled from "styled-components"
 import { NavLink, useHistory } from "react-router-dom";
 import {
   Container,
@@ -13,16 +14,28 @@ import {
   FormHeading,
   InlineDiv,SubmitButton,
   ErrorMessage,Formfooter,Input
-} from "../FormComponent";
+} from "../../form/FormComponent";
+const Scroll = styled.div`
+  overflow-y: scroll;
+  height: 600px;
+`;
+const Div=styled.div`
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+`;
 
 export default function Index() {
-  const { handleChange, user, errors, handleSubmit } = useForm(validateInfo);
+  const { handleChange, user, errors, handleSubmit ,register} = useForm(validateInfo);
 
   return (
+    <Div>
     <Container>
       <Content>
+        <Scroll>
         <FormHeading>Registration</FormHeading>
-
+        {register.errors&& <ErrorMessage>{register.errors}</ErrorMessage>}
         <FormContainer>
           <form method="POST" onSubmit={handleSubmit}>
             <FormControl>
@@ -79,10 +92,10 @@ export default function Index() {
                 id="password"
                   type="password"
                   placeholder="Enter Password"
-                  onChange={handleChange("password1")}
+                  onChange={handleChange("password")}
                 />
-                {errors.password1 && (
-                  <ErrorMessage>{errors.password1}</ErrorMessage>
+                {errors.password && (
+                  <ErrorMessage>{errors.password}</ErrorMessage>
                 )}
               </InputDiv>
             </FormControl>
@@ -103,17 +116,20 @@ export default function Index() {
             <InlineDiv>
               <Label for="gender">Gender</Label>
               <InlineDiv>
-                <input type="radio" name="gender" id="gender" value="Male" />
+                <input type="radio" name="gender" id="gender" value="Male" onChange={handleChange("gender")} />
                 <Label for="gender">Male</Label>
               </InlineDiv>
               <InlineDiv>
-                <input type="radio" name="gender" id="gender" value="Female" />
+                <input type="radio" name="gender" id="gender" value="Female" onChange={handleChange("gender")}/>
                 <Label for="gender">Female</Label>
               </InlineDiv>
+              {errors.gender && (
+                  <ErrorMessage>{errors.gender}</ErrorMessage>
+                )}
             </InlineDiv>
 
             <SubmitButton  type="submit">
-              Registration
+             {register.isLoading?"loading....":" Registration"}
             </SubmitButton>
 
             <Formfooter>
@@ -121,7 +137,9 @@ export default function Index() {
             </Formfooter>
           </form>
         </FormContainer>
+        </Scroll>
       </Content>
     </Container>
+   </Div>
   );
 }
