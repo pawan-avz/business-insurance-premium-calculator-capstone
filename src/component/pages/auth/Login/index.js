@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory, Route } from "react-router-dom";
 import LoginWithGoogle from "./Oauth2/LoginWithGoogle";
+import Dashboard from "../../Dashboard/Index";
 // import "../css/login.css";
 import axios from "axios";
 import {
@@ -13,6 +14,8 @@ import {
   LoginFooter,
   SocialLogin,
   SocialBtn,
+  OrSeprator,
+  OrText,
 } from "./LoginStyle";
 
 const Login = () => {
@@ -73,10 +76,11 @@ const Login = () => {
       .then((response) => {
         console.log(response);
         setLoginMessage("login in successfully, Loading....");
+        localStorage.setItem("userDetails", JSON.stringify(response.data));
         setTimeout(() => history.push("/dashboard"), 2000);
       })
       .catch((errors) => {
-        setLoginMessage("login failed");
+        setLoginMessage("Invalid user name or password");
         setState({ email: "", password: "" });
         console.log(errors);
       });
@@ -94,7 +98,7 @@ const Login = () => {
       lable: "Email",
       name: "email",
       type: "email",
-      placeholder: "test@gmail.com",
+      placeholder: "Email",
       value: state.email,
       errorMessage: emailError,
     },
@@ -102,7 +106,7 @@ const Login = () => {
       lable: "Password",
       name: "password",
       type: "password",
-      placeholder: "Enter password",
+      placeholder: "password",
       value: state.password,
       errorMessage: passwordError,
     },
@@ -113,14 +117,18 @@ const Login = () => {
       <InnerContainer>
         <H2>Log in</H2>
         <LoginWithGoogle />
+
         <LableAndInput>
+          <OrSeprator>
+            <OrText>OR</OrText>
+          </OrSeprator>
           {loginMessage !== "" && (
             <p
               style={{
-                // color: "#fff",
-                //marginLeft: "25px",
+                color: "#292929",
+                marginTop: "25px",
                 backgroundColor:
-                  loginMessage === "login failed"
+                  loginMessage !== "login in successfully, Loading...."
                     ? "rgba(256,200,200,1)"
                     : "rgba(200,256,200,1)",
                 padding: "10px",

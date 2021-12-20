@@ -10,6 +10,7 @@ import Premium from "./component/pages/Premium";
 // import Registration from "./component/pages/Registration";
 import Claim from "./component/pages/Claim";
 import Registration from "./component/pages/auth/Registration";
+import Dashboard from "./component/pages/Dashboard/Index";
 function App() {
   return (
     <div className="App">
@@ -32,6 +33,11 @@ function App() {
       <Route exact path="/registration">
         <Registration />
       </Route>
+
+      <Route exact path="/dashboard">
+        <Dashboard />
+      </Route>
+
       <Route exact path="/login">
         <Login />
       </Route>
