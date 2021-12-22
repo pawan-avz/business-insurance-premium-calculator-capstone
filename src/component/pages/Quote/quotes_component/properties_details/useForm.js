@@ -5,52 +5,44 @@ import { useHistory } from "react-router-dom";
 const useForm = (validate) => {
   let history = useHistory();
 
-  let arr = JSON.parse(localStorage.getItem("selected_business"));
+  let business = JSON.parse(localStorage.getItem("selected_business"));
 
-  let initialState = {};
-  let initialState2 = {};
-  let input = {
+
+
+
+
+  const [properties, setProperty] = React.useState({
+    name:business.property,
     brandName: "",
     model: "",
     rate: "",
     date: "",
-  };
-
-  arr.forEach((property) => {
-    initialState[property] = input;
+    email:""
   });
-
-  const [properties, setProperty] = React.useState(JSON.parse(JSON.stringify(initialState)));
   const step = React.useContext(StepContext);
   const { changeBack, changeNext, steps } = step;
-  const [errors, setErrors] = React.useState(JSON.parse(JSON.stringify(initialState)));
+  const [errors, setErrors] = React.useState();
 
   const handleChange = (key) => (key1) => (event) => {
     let value = event.target.value;
 
     setProperty((oldData) => ({
       ...oldData,
-      [key]: {
-        ...oldData[key],
-        [key1]: value,
-      },
+      [key]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { newerrors, flag } = validateForm(
-      properties,
-      JSON.parse(JSON.stringify(initialState))
-    );
+    const { newerrors, flag } = validateForm(properties);
 
     setErrors(newerrors);
-    console.log(initialState, "inittial");
-    console.log(errors, "errors");
+ 
     if (!flag) {
-      localStorage.setItem("selected_property", JSON.stringify(properties));
-      changeNext();
-      history.push(`/quote/form5`);
+      console.log(properties)
+      // localStorage.setItem("selected_property", JSON.stringify(properties));
+      // changeNext();
+      // history.push(`/quote/form5`);
     }
   };
 

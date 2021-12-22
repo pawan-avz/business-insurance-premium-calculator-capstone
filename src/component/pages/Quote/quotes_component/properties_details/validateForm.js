@@ -1,5 +1,5 @@
-export default function validateForm(values,error) {
-  let newerrors =error;
+export default function validateForm(values) {
+  let newerrors ={};
 
   let flag=false;
   

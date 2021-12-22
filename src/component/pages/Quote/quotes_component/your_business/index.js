@@ -57,7 +57,7 @@ export default function Index() {
                   type="date"
                 
                   required
-                    onChange={handleChange("date")}
+                  onChange={handleChange("date")}
                 />
                 {errors.date && (
                   <ErrorMessage>{errors.date}</ErrorMessage>
@@ -67,7 +67,7 @@ export default function Index() {
             <FormControl>
               <Label for="property">select your property</Label>
               {
-                  property.map((item)=><Checkbox label={item.label} id={item.id} change={handleChange}/>)
+                  property.map((item)=><>{item.label}<input type="radio" value={item.value} id={item.id}  onChange={handleChange("property")}/></>)
               }
               {errors.property && (
                   <ErrorMessage>{errors.property}</ErrorMessage>
