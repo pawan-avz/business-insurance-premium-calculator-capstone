@@ -39,7 +39,7 @@ const Forgotpswd = () => {
       <Container>
          <InnerContainer>
            <H2>Forgot password ?  </H2>
-             <form >
+             <form method="POST">
                  <LableAndInput>
                      <label for="email">Enter your email :</label>
                      <input type="email"

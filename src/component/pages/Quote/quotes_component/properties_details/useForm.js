@@ -2,6 +2,7 @@ import React from "react";
 import validateForm from "./validateForm";
 import StepContext from "../../step/StepContext";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 const useForm = (validate) => {
   let history = useHistory();
 
@@ -37,7 +38,7 @@ const useForm = (validate) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const { newerrors, flag } = validateForm(
       properties,
@@ -48,9 +49,19 @@ const useForm = (validate) => {
     console.log(initialState, "inittial");
     console.log(errors, "errors");
     if (!flag) {
-      localStorage.setItem("selected_property", JSON.stringify(properties));
+      console.log(properties,"hjdhgsjgj");
+      localStorage.setItem("selected_property", JSON.stringify(properties));    
+    await axios
+    .post("http://localhost:8080/save-property",properties).then(response =>{ 
       changeNext();
       history.push(`/quote/form5`);
+    })
+    .catch(errors=>{
+      console.log(errors);
+    })
+         
+      // changeNext();
+      // // history.push(`/quote/form5`);
     }
   };
 

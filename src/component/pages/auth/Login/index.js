@@ -107,7 +107,7 @@ const Login = () => {
       value: state.email,
       errorMessage: emailError,
     },
-    {
+    {   
       lable: "Password",
       name: "password",
       type: "password",
