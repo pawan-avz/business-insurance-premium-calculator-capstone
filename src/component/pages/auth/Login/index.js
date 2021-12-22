@@ -111,7 +111,7 @@ const Login = ({auth,setLogged,setUser}) => {
       value: state.email,
       errorMessage: emailError,
     },
-    {
+    {   
       lable: "Password",
       name: "password",
       type: "password",

@@ -2,6 +2,7 @@ import React from "react";
 import validateForm from "./validateForm";
 import StepContext from "../../step/StepContext";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 const useForm = (validate) => {
   let history = useHistory();
 
@@ -13,7 +14,7 @@ const [properties, setProperty] = React.useState({
     model: "",
     rate: "",
     date: "",
-    email:""
+    email:"gowri@gmail.com"
   });
   const step = React.useContext(StepContext);
   const { changeBack, changeNext, steps } = step;
@@ -26,20 +27,39 @@ const [properties, setProperty] = React.useState({
       ...oldData,
       [key]: value,
     }));
-    console.log(properties);
+   
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const { newerrors, flag } = validateForm(properties);
 
     setErrors(newerrors);
+
  
     if (properties) {
-      console.log(properties)
+      console.log(properties,"sumdjhbjhfd")
       // localStorage.setItem("selected_property", JSON.stringify(properties));
       // changeNext();
       // history.push(`/quote/form5`);
+     const data= {
+        "email":"manish@gmail.com",
+         "name":properties.name,
+          "brand_name":properties.brandName,
+          "model":properties.model,
+          "purchase_rate":properties.rate,
+          "purchase_date":properties.date
+      
+  }
+      await axios
+      .post("http://localhost:8080/save-property",data).then(response =>{ 
+        changeNext();
+        history.push(`/quote/form5`);
+      })
+      .catch(errors=>{
+        console.log(errors);
+      })
+
     }
   };
 
