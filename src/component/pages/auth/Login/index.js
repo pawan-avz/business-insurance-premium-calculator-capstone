@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useHistory, Route } from "react-router-dom";
 import LoginWithGoogle from "./Oauth2/LoginWithGoogle";
-import Dashboard from "../../dashboard";
+import Dashboard from "../../Dashboard";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import axios from "axios";

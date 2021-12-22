@@ -16,7 +16,7 @@ import Navbar from "./component/pages/Nav/Navbar";
 import styled from "styled-components";
 import Registration from "./component/pages/auth/Registration";
 import Profile from "./component/pages/profile"
-import Dashboard from "./component/pages/dashboard/index";
+import Dashboard from "./component/pages/Dashboard/index";
 
 import Reset from "./component/pages/auth/ForgotPassword";
 const Scroll = styled.div`
