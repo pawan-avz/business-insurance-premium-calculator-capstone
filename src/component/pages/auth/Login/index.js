@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
-// import "../css/login.css";
+import { NavLink, useHistory, Route } from "react-router-dom";
+import LoginWithGoogle from "./Oauth2/LoginWithGoogle";
+import Dashboard from "../../dashboard";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import axios from "axios";
+
+import { setLoggedIn,fetchUserSuccess } from "../../../../redux";
 import {
   Container,
   InnerContainer,
@@ -11,13 +15,17 @@ import {
   ButtonContainer,
   Button,
   LoginFooter,
+  SocialLogin,
+  SocialBtn,
+  OrSeprator,
+  OrText,
 } from "./LoginStyle";
 const SuccessMessage = styled.p`
   color: green;
-  text-align:center;
+  text-align: center;
 `;
 
-const Login = () => {
+const Login = ({auth,setLogged,setUser}) => {
   const history = useHistory();
   const [state, setState] = useState({
     email: "",
@@ -68,42 +76,38 @@ const Login = () => {
     }
     return status;
   };
-  //post fetch function
+
   const postFetch = async () => {
-    try {
-      const request = await axios.post("/login", {
-        headers: {
-          "Content-type": "application/json",
-        },
-        method: "POST",
-        body: { state }, //post login creadential
+    await axios
+      .post("http://localhost:8080/signing", state)
+      .then((response) => {
+        console.log(response);
+        setLoginMessage("login in successfully, Loading....");
+      
+        setLogged();
+        setUser(response.data)
+        history.push("/dashboard")
+      })
+      .catch((errors) => {
+        setLoginMessage("Invalid user name or password");
+        setState({ email: "", password: "" });
+        console.log(errors);
       });
-      if (request.status === 200) {
-        setLoginMessage("Loged in successfully");
-        history.push("/dashboard"); //redirect to dashboard
-      } else {
-        setLoginMessage("Login failed");
-      }
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   // function invoke when login button clicked
   const postLoginCredential = () => {
     if (loginController && validateEmpty()) {
       postFetch();
-      history.push("/"); //for test
     }
   };
-
   // form input type, name placeholders ...
   const formData = [
     {
       lable: "Email",
       name: "email",
       type: "email",
-      placeholder: "test@gmail.com",
+      placeholder: "Email",
       value: state.email,
       errorMessage: emailError,
     },
@@ -111,7 +115,7 @@ const Login = () => {
       lable: "Password",
       name: "password",
       type: "password",
-      placeholder: "Enter password",
+      placeholder: "password",
       value: state.password,
       errorMessage: passwordError,
     },
@@ -121,7 +125,33 @@ const Login = () => {
     <Container>
       <InnerContainer>
         <H2>Log in</H2>
+        <LoginWithGoogle />
+
+        <LableAndInput>
+          <OrSeprator>
+            <OrText>OR</OrText>
+          </OrSeprator>
+          {loginMessage !== "" && (
+            <p
+              style={{
+                color: "#292929",
+                marginTop: "25px",
+                backgroundColor:
+                  loginMessage !== "login in successfully, Loading...."
+                    ? "rgba(256,200,200,1)"
+                    : "rgba(200,256,200,1)",
+                padding: "10px",
+                borderRadius: "5px",
+                textAlign: "center",
+              }}
+            >
+              {loginMessage}
+            </p>
+          )}
+        </LableAndInput>
+
         <SuccessMessage>{history.location.state}</SuccessMessage>
+
         <form method="POST">
           {formData.map((data, index) => (
             <LableAndInput>
@@ -163,7 +193,19 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+const mapDispatchToProps=dispatch=>{
+	return{
+		setLogged:()=>dispatch(setLoggedIn()),
+    setUser:(users)=>dispatch(fetchUserSuccess(users))
 
-{
-}
+	}
+  }
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login);
+
+

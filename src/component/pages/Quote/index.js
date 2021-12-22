@@ -9,7 +9,7 @@ import { Route } from "react-router";
 import { NavLink, Switch } from "react-router-dom";
 import "../../css/quotes.css";
 import Form5 from "./quotes_component/Form5";
-import Premium from "./quotes_component/premium/Index";
+import Premium from "./quotes_component/premium/index";
 
 import Aboutyou from "./quotes_component/about_you";
 
