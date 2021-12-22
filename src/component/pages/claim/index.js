@@ -35,7 +35,7 @@ const Button = styled.button`
   background-color: crimson;
   color: white;
 
-  padding: 8px 30px;
+  padding: 15px 30px;
   margin: 10px 0px 5px 5px;
   border: none;
   cursor: pointer;
@@ -86,7 +86,7 @@ export default function Index() {
                   </InputDiv>
 
                   <NavLink to="/">
-                    <Button onClick={handleSubmit}>Continue ➡</Button>
+                    <Button onClick={handleSubmit}>Continue </Button>
                   </NavLink>
                 </InlineDiv>
                 {error && <ErrorMessage>{error}</ErrorMessage>}

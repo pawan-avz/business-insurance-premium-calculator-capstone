@@ -18,7 +18,7 @@ const validateInput = (key, value) => {
     case "email":
       {
         if (!/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/.test(value)) {
-          errors.email = "email address  should  be valid *";
+          errors.username = "email address  should  be valid *";
         }
       }
       break;
