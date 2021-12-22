@@ -5,21 +5,21 @@ export default function validateForm(values) {
   
   for (const property in values) {
     
-    if (!values[property].brandName.trim()) {
+    if (!values.brandName.trim()) {
       flag=true;
-      newerrors[property].brandName = `${property} brand name is required *`;
+      newerrors.brandName = `brand name is required *`;
     }
-    if (!values[property].model.trim()) {
+    if (!values.model.trim()) {
       flag=true;
-      newerrors[property].model = `${property}  model is required *`;
+      newerrors.model = ` model is required *`;
     }
-    if (!values[property].rate.trim()) {
+    if (!values.rate.trim()) {
       flag=true;
-      newerrors[property].rate = `${property}  rate is required *`;
+      newerrors.rate = ` rate is required *`;
     }
-    if (!values[property].date.trim()) {
+    if (!values.date.trim()) {
       flag=true;
-      newerrors[property].date = `${property}  date is required *`;
+      newerrors.date = ` date is required *`;
     }
   }
 

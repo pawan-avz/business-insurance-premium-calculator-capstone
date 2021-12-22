@@ -7,12 +7,8 @@ const useForm = (validate) => {
 
   let business = JSON.parse(localStorage.getItem("selected_business"));
 
-
-
-
-
-  const [properties, setProperty] = React.useState({
-    name:business.property,
+const [properties, setProperty] = React.useState({
+    name:business,
     brandName: "",
     model: "",
     rate: "",
@@ -23,13 +19,14 @@ const useForm = (validate) => {
   const { changeBack, changeNext, steps } = step;
   const [errors, setErrors] = React.useState();
 
-  const handleChange = (key) => (key1) => (event) => {
+  const handleChange = (key) =>(event) => {
     let value = event.target.value;
 
     setProperty((oldData) => ({
       ...oldData,
       [key]: value,
     }));
+    console.log(properties);
   };
 
   const handleSubmit = (e) => {
@@ -38,7 +35,7 @@ const useForm = (validate) => {
 
     setErrors(newerrors);
  
-    if (!flag) {
+    if (properties) {
       console.log(properties)
       // localStorage.setItem("selected_property", JSON.stringify(properties));
       // changeNext();

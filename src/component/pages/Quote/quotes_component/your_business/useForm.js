@@ -27,6 +27,7 @@ const useForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(business);
     let error=validateForm(business);
     setErrors(error);
    

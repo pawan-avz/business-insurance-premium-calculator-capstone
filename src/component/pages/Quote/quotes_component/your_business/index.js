@@ -65,13 +65,21 @@ export default function Index() {
               </InputDiv>
             </FormControl>
             <FormControl>
-              <Label for="property">select your property</Label>
-              {
-                  property.map((item)=><>{item.label}<input type="radio" value={item.value} id={item.id}  onChange={handleChange("property")}/></>)
-              }
-              {errors.property && (
+              <Label for="property">
+                Enter peoperty
+              </Label>
+              <InputDiv>
+                <Input
+                  id="property"
+                  type="text"
+                
+                  required
+                  onChange={handleChange("property")}
+                />
+                {errors.property && (
                   <ErrorMessage>{errors.property}</ErrorMessage>
                 )}
+              </InputDiv>
             </FormControl>
             
           </form>
