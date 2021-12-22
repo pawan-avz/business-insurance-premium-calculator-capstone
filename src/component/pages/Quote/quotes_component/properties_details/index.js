@@ -1,4 +1,4 @@
-import React ,{useState}from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { NavLink, Switch } from "react-router-dom";
 import StepContext from "../../step/StepContext";
@@ -30,7 +30,7 @@ export default function Index() {
   let field;
   const step = React.useContext(StepContext);
   const { changeBack, changeNext, steps } = step;
-  let arr = JSON.parse(localStorage.getItem("selected_business"));
+
   const inputData = [
     {
       label: "Brand name*",
@@ -61,46 +61,21 @@ export default function Index() {
         <Scroll>
           <FormContainer>
             <form>
-              {arr.map((property, index) => (
-                <>
-                  {/* computer details */}
-                  {arr && arr.find((data) => data === property) && (
-                    <h2
-                      style={{
-                        textAlign: "center",
-                        padding: "10px",
-                        fontSize: "20px",
-                        color: "#ccc",
-                        marginTop: "10px",
-
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      {property} Details
-                    </h2>
-                  )}
-
-                  {arr &&
-                    arr.find((data) => data === property) &&
-                    inputData.map((data, index) => (
-                      <FormControl>
-                        <Label for={data.id}>{data.label}</Label>
-                        <InputDiv>
-                          <Input
-                            required
-                            type={data.type}
-                            placeholder={data.label}
-                            onChange={handleChange(property)(data.id)}
-                          />
-                          {errors[property][data.id] && (
-                            <ErrorMessage>
-                              {errors[property][data.id]}
-                            </ErrorMessage>
-                          )}
-                        </InputDiv>
-                      </FormControl>
-                    ))}
-                </>
+              {inputData && inputData.map(data => (
+                <FormControl>
+                  <Label for={data.id}>{data.label}</Label>
+                  <InputDiv>
+                    <Input
+                      required
+                      type={data.type}
+                      placeholder={data.label}
+                      onChange={handleChange(data.id)}
+                    />
+                    {errors && (
+                      <ErrorMessage>{errors}</ErrorMessage>
+                    )}
+                  </InputDiv>
+                </FormControl>
               ))}
             </form>
           </FormContainer>
