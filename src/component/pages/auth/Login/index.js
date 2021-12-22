@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { NavLink, useHistory, Route } from "react-router-dom";
 import LoginWithGoogle from "./Oauth2/LoginWithGoogle";
-import Dashboard from "../../Dashboard";
-// import "../css/login.css";
+import Dashboard from "../../dashboard";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import axios from "axios";
+
+import { setLoggedIn,fetchUserSuccess } from "../../../../redux";
 import {
   Container,
   InnerContainer,
@@ -23,7 +25,7 @@ const SuccessMessage = styled.p`
   text-align: center;
 `;
 
-const Login = () => {
+const Login = ({auth,setLogged,setUser}) => {
   const history = useHistory();
   const [state, setState] = useState({
     email: "",
@@ -77,12 +79,14 @@ const Login = () => {
 
   const postFetch = async () => {
     await axios
-      .post("http://localhost:8080/login", state)
+      .post("http://localhost:8080/signing", state)
       .then((response) => {
         console.log(response);
         setLoginMessage("login in successfully, Loading....");
-        localStorage.setItem("userDetails", JSON.stringify(response.data));
-        setTimeout(() => history.push("/dashboard"), 2000);
+      
+        setLogged();
+        setUser(response.data)
+        history.push("/dashboard")
       })
       .catch((errors) => {
         setLoginMessage("Invalid user name or password");
@@ -189,7 +193,19 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+const mapDispatchToProps=dispatch=>{
+	return{
+		setLogged:()=>dispatch(setLoggedIn()),
+    setUser:(users)=>dispatch(fetchUserSuccess(users))
 
-{
-}
+	}
+  }
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login);
+
+

@@ -10,8 +10,9 @@ import googleLogo from "../../../../images/google.png";
 const LoginWithGoogle = () => {
   return (
     <>
+    {/* http://localhost:8080/oauth2/authorization/google */}
       <SocialLogin>
-        <SocialBtn href="http://localhost:8080/oauth2/authorization/google">
+        <SocialBtn href="#">
           <img width="25px" height="25px" src={googleLogo} alt="Google" />
           <span>Log in with Google</span>
         </SocialBtn>

@@ -52,12 +52,12 @@ export default function Reset() {
       e.preventDefault()
     const valid=validate();
     if(valid){
-        const  mail="mchauhan11175@gmail.com";
+        const  mail="manish@gmail.com";
         const URL=Domain+"/change-password";
         const body={
             oldPassword:password,
             newPassword:newPass,
-            email:mail
+            username:mail
         }
         setstate(prev=>({...prev,isLoading:true}))
         axios.post(URL,body)
