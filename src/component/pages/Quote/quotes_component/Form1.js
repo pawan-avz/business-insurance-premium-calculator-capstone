@@ -4,10 +4,10 @@ import "../../../css/form1.css";
 import StepContext from "../step/StepContext";
 import { useHistory } from "react-router-dom";
 const Form1 = (props) => {
-  const step=React.useContext(StepContext);
-  const {steps,changeBack,changeNext,resetStep}=step;  
-  const [insurance,setInsurance]=React.useState("");
-  let history=useHistory()
+  const step = React.useContext(StepContext);
+  const { steps, changeBack, changeNext, resetStep } = step;
+  const [insurance, setInsurance] = React.useState("");
+  let history = useHistory();
   const typeOfInsurance = [
     "Select type of insurance",
     "Auto insurance",
@@ -23,12 +23,12 @@ const Form1 = (props) => {
     "Commercial auto liability",
     "Worker's compensation",
   ];
- const handleSumbit=(e)=>{
-     e.preventDefault()
-     localStorage.setItem("insurance",insurance);
-     changeNext();
-    history.push("/quote/form2")
- }
+  const handleSumbit = (e) => {
+    e.preventDefault();
+    localStorage.setItem("insurance", insurance);
+    changeNext();
+    history.push("/quote/form2");
+  };
   return (
     <>
       <div className="info_form1">
@@ -54,18 +54,16 @@ const Form1 = (props) => {
         <div className="form1">
           <label>Select Business type</label>
           <div className="profession">
-            <select onChange={(e)=>setInsurance(e.target.value)}>
+            <select onChange={(e) => setInsurance(e.target.value)}>
               {typeOfBusinessInsurance.map((data) => (
                 <option>{data}</option>
               ))}
             </select>
           </div>
           <div className="get_quote">
-           
-              <button onClick={handleSumbit}>Get a Quote</button>
-         
+            <button onClick={handleSumbit}>Get a Quote</button>
           </div>
-        </div> 
+        </div>
 
         <p className="customer_call">
           Speak with a licensed insurance agent: +91 9999999988 Monday – Friday,
@@ -77,6 +75,3 @@ const Form1 = (props) => {
 };
 
 export default Form1;
-
-
-
