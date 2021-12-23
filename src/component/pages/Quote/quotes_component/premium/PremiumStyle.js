@@ -41,110 +41,169 @@ export const ContentDiv = styled.div`
   width: 100%;
 `;
 
-export const Ul = styled.ul`
-  padding: 0px;
+export const UL = styled.ul`
   li {
-    font-size: 14px;
+    width: 80%;
     border-radius: 3px;
-    padding: 15px 20px;
+    padding: 25px 30px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 25px;
   }
-  .table-header {
-    background-color: #95a5a6;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
+
   .table-row {
     background-color: #ffffff;
     box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
   }
-
-  div {
-    flex-basis: 10%;
-    select {
-      border: none;
-      border-bottom: 1px solid #6c7a89;
-      width: 100%;
-      padding: 5px;
-    }
-    select:focus {
-      outline: none;
-    }
+  .col-1 {
+    width: 50%;
+    text-align: left;
   }
-  .total {
+  .col-2 {
+    width: 50%;
     text-align: center;
   }
-  .grandtotal {
-    background-color: crimson;
-    color: #ffffff;
-    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
-    font-size: 15px;
+
+  select {
+    border: none;
+    border-bottom: 1px solid #6c7a89;
+    width: 20%;
+    padding: 5px;
+  }
+  select:focus {
+    outline: none;
   }
 
-  @media only screen and (max-width: 600px) {
+  @media all and (max-width: 767px) {
     .table-header {
       display: none;
     }
-    li {
-      padding: 10px;
-    }
-
     .table-row {
-      pdding: 0px;
-      background-color: #ffffff;
     }
-
-    .table-row div {
-      padding: 20px;
-      margin: 10px;
-      background-color: #ffffff;
-      box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
-    }
-
     li {
       display: block;
     }
-
-    div {
+    .col {
       flex-basis: 100%;
     }
-
-    div {
+    .col {
       display: flex;
-      justify-content: space-around;
       padding: 10px 0;
       &:before {
         color: #6c7a89;
         padding-right: 10px;
-        content: attr(dataLabel);
+        content: attr(data-label);
         flex-basis: 50%;
-        text-align: left;
-      }
-      select {
-        width: 18%;
-      }
-    }
-    .total {
-      background-color: #396eb0 !important;
-      color: #ffffff !important;
-      &:before {
-        color: #ffffff;
-      }
-    }
-    .grandtotal {
-      display: flex;
-
-      div {
-        &:before {
-          content: none;
-        }
+        text-align: right;
       }
     }
   }
 `;
+
+// export const Ul = styled.ul`
+//   padding: 0px;
+//   li {
+//     font-size: 14px;
+//     border-radius: 3px;
+//     padding: 15px 20px;
+//     display: flex;
+//     justify-content: space-between;
+//     margin-bottom: 25px;
+//   }
+//   .table-header {
+//     background-color: #95a5a6;
+//     font-size: 14px;
+//     text-transform: uppercase;
+//     letter-spacing: 0.03em;
+//   }
+//   .table-row {
+//     background-color: #ffffff;
+//     box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+//   }
+
+//   div {
+//     flex-basis: 10%;
+//     select {
+//       border: none;
+//       border-bottom: 1px solid #6c7a89;
+//       width: 100%;
+//       padding: 5px;
+//     }
+//     select:focus {
+//       outline: none;
+//     }
+//   }
+//   .total {
+//     text-align: center;
+//   }
+//   .grandtotal {
+//     background-color: crimson;
+//     color: #ffffff;
+//     box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+//     font-size: 15px;
+//   }
+
+//   @media only screen and (max-width: 600px) {
+//     .table-header {
+//       display: none;
+//     }
+//     li {
+//       padding: 10px;
+//     }
+
+//     .table-row {
+//       pdding: 0px;
+//       background-color: #ffffff;
+//     }
+
+//     .table-row div {
+//       padding: 20px;
+//       margin: 10px;
+//       background-color: #ffffff;
+//       box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+//     }
+
+//     li {
+//       display: block;
+//     }
+
+//     div {
+//       flex-basis: 100%;
+//     }
+
+//     div {
+//       display: flex;
+//       justify-content: space-around;
+//       padding: 10px 0;
+//       &:before {
+//         color: #6c7a89;
+//         padding-right: 10px;
+//         content: attr(dataLabel);
+//         flex-basis: 50%;
+//         text-align: left;
+//       }
+//       select {
+//         width: 18%;
+//       }
+//     }
+//     .total {
+//       background-color: #396eb0 !important;
+//       color: #ffffff !important;
+//       &:before {
+//         color: #ffffff;
+//       }
+//     }
+//     .grandtotal {
+//       display: flex;
+
+//       div {
+//         &:before {
+//           content: none;
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export const ButtonDiv = styled.div`
   display: flex;
@@ -154,36 +213,12 @@ export const ButtonDiv = styled.div`
 `;
 
 export const ContinueButton = styled.button`
-  background-color: ${(props) =>
-    props.selectedDeductible[0] === "select" ||
-    props.selectedDeductible[1] === "select" ||
-    props.selectedDeductible[2] === "select" ||
-    props.selectedDeductible[0] === undefined ||
-    props.selectedDeductible[1] === undefined ||
-    props.selectedDeductible[2] === undefined
-      ? "#cccccc"
-      : "rgb(6, 115, 165)"};
+  background-color: rgb(6, 115, 165);
 
-  cursor: ${(props) =>
-    props.selectedDeductible[0] === "select" ||
-    props.selectedDeductible[1] === "select" ||
-    props.selectedDeductible[2] === "select" ||
-    props.selectedDeductible[0] === undefined ||
-    props.selectedDeductible[1] === undefined ||
-    props.selectedDeductible[2] === undefined
-      ? "auto"
-      : "pointer"};
+  cursor: pointer;
   padding: 10px 20px;
   width: 100px;
-  color: ${(props) =>
-    props.selectedDeductible[0] === "select" ||
-    props.selectedDeductible[1] === "select" ||
-    props.selectedDeductible[2] === "select" ||
-    props.selectedDeductible[0] === undefined ||
-    props.selectedDeductible[1] === undefined ||
-    props.selectedDeductible[2] === undefined
-      ? "#666666"
-      : "white"};
+  color: white;
   border-radius: 6px;
   border: none;
   margin: 0 20px;
