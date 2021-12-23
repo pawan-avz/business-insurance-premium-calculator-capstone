@@ -77,7 +77,7 @@ const Login = () => {
 
   const postFetch = async () => {
     await axios
-      .post("http://localhost:8080/login", state)
+      .post("http://localhost:8080/signing/", state)
       .then((response) => {
         console.log(response);
         setLoginMessage("login in successfully, Loading....");
