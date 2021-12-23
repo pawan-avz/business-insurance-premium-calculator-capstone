@@ -44,16 +44,22 @@ const Ul = styled.ul`
   }
 `;
 
-const Nav = ({ open, auth ,logout,user}) => {
+const Nav = ({ open, auth, logout, user }) => {
   let isLoggedIn = auth.isLogged;
 
   return (
     <Ul open={open}>
-      {isLoggedIn? (
+      {isLoggedIn ? (
         <>
-      
           <NavLink to="/dashboard">
-            <li>{user.firstName} {user.lastName}</li>
+            <li>
+              {user.firstName} {user.lastName}
+            </li>
+          </NavLink>
+          <NavLink to="/quote/form1">
+            <li style={{ backgroundColor:"transparent", border:"1px solid white",borderRadius:"5px", padding: "8px" }}>
+              Get a Quote
+            </li>
           </NavLink>
           <NavLink to="/profile">
             <li>profile</li>
@@ -62,7 +68,10 @@ const Nav = ({ open, auth ,logout,user}) => {
             <li>Update Password</li>
           </NavLink>
           <NavLink to="/">
-            <li onClick={logout} style={{ backgroundColor: "crimson", padding: "10px" }}>
+            <li
+              onClick={logout}
+              style={{ backgroundColor:"crimson", border:"1px solid white",borderRadius:"5px", padding: "8px" }}
+            >
               logout
             </li>
           </NavLink>
@@ -78,11 +87,6 @@ const Nav = ({ open, auth ,logout,user}) => {
           <NavLink to="/claim">
             <li>Claim</li>
           </NavLink>
-          <NavLink to="/quote/form1">
-            <li style={{ backgroundColor: "crimson", padding: "10px" }}>
-              Get a Quote
-            </li>
-          </NavLink>
         </>
       )}
     </Ul>
@@ -92,14 +96,14 @@ const Nav = ({ open, auth ,logout,user}) => {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
-    user:state.user.users,
+    user: state.user.users,
   };
 };
 
-const mapDispatchToProps=dispatch=>{
-	return{
-		logout:()=>dispatch(logout())
-	}
-  }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logout: () => dispatch(logout()),
+  };
+};
 
-export default connect(mapStateToProps,mapDispatchToProps)(Nav);
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

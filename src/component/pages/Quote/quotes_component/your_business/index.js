@@ -89,7 +89,7 @@ export default function Index() {
         
       </Content>
       <ButtonDiv>
-      <NavLink to={`/quote/form2`}>
+      <NavLink to={`/quote/form1`}>
       <BackButton onClick={changeBack}> back</BackButton>
               
       </NavLink>

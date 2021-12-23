@@ -1,7 +1,7 @@
 import { SET_LOGGEDIN,RESET_LOGGEDIN } from "./AuthTyeps";
 
 const initialState={
-    isLogged:false
+    isLogged:true
 }
 const authReducer=(state=initialState,action)=>{
     switch(action.type){

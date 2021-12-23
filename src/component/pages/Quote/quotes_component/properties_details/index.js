@@ -82,11 +82,14 @@ export default function Index() {
         </Scroll>
       </Content>
       <ButtonDiv>
-        <NavLink to={`/quote/form3`}>
+        <NavLink to={`/quote/form2`}>
           <BackButton onClick={changeBack}> back</BackButton>
         </NavLink>
 
-        <ContinueButton onClick={handleSubmit}>continue </ContinueButton>
+
+       <ContinueButton onClick={handleSubmit}>continue </ContinueButton>
+
+
       </ButtonDiv>
     </Container>
   );

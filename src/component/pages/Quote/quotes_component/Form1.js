@@ -2,10 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../../../css/form1.css";
 import StepContext from "../step/StepContext";
+import { useHistory } from "react-router-dom";
 const Form1 = (props) => {
   const step=React.useContext(StepContext);
   const {steps,changeBack,changeNext,resetStep}=step;  
-  
+  const [insurance,setInsurance]=React.useState("");
+  let history=useHistory()
   const typeOfInsurance = [
     "Select type of insurance",
     "Auto insurance",
@@ -21,7 +23,12 @@ const Form1 = (props) => {
     "Commercial auto liability",
     "Worker's compensation",
   ];
-
+ const handleSumbit=(e)=>{
+     e.preventDefault()
+     localStorage.setItem("insurance",insurance);
+     changeNext();
+    history.push("/quote/form2")
+ }
   return (
     <>
       <div className="info_form1">
@@ -47,16 +54,16 @@ const Form1 = (props) => {
         <div className="form1">
           <label>Select Business type</label>
           <div className="profession">
-            <select>
+            <select onChange={(e)=>setInsurance(e.target.value)}>
               {typeOfBusinessInsurance.map((data) => (
                 <option>{data}</option>
               ))}
             </select>
           </div>
           <div className="get_quote">
-            <NavLink to="/quote/form2">
-              <button onClick={changeNext}>Get a Quote</button>
-            </NavLink>
+           
+              <button onClick={handleSumbit}>Get a Quote</button>
+         
           </div>
         </div> 
 

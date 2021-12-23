@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-
+import StepContext from "../../step/StepContext";
 import {
   Container,
   HeadingDiv,
@@ -17,7 +17,8 @@ function Index() {
   const [data, setData] = useState({});
   const [message, setMessage] = useState("");
   const [total, setTotal] = useState(0);
-
+  const step = React.useContext(StepContext);
+  const { changeBack, changeNext, steps } = step;
   const DATA = ["Simple Premium", "Business", data.item, data.basePremium];
 
   //feth data from backedn to show premium sheet
@@ -50,6 +51,7 @@ function Index() {
       .then((response) => {
         console.log(response);
         setMessage(response.data);
+        changeNext();
       })
       .catch((errors) => {
         console.log(errors);
@@ -105,8 +107,8 @@ function Index() {
           </UL>
         </ContentDiv>
         <ButtonDiv>
-          <NavLink to={`/quote/form4`}>
-            <BackButton>back</BackButton>
+          <NavLink to={`/quote/form3`}>
+            <BackButton onClick={changeBack}>back</BackButton>
           </NavLink>
           <ContinueButton onClick={savePremium}>purchase</ContinueButton>
         </ButtonDiv>
