@@ -15,7 +15,7 @@ import { connect } from "react-redux";
 import Navbar from "./component/pages/Nav/Navbar";
 import styled from "styled-components";
 import Registration from "./component/pages/auth/Registration";
-import Profile from "./component/pages/profile"
+import Profile from "./component/pages/profile";
 import Dashboard from "./component/pages/dashboard";
 
 import Reset from "./component/pages/auth/ForgotPassword";
@@ -53,12 +53,11 @@ function App({ auth }) {
           </StepProvider>
         </Route>
 
-     
         <Route exact path="/claim">
           <Claim />
         </Route>
         <Route exact path="/profile">
-          <Profile/>
+          <Profile />
         </Route>
 
         <Route exact path="/registration">

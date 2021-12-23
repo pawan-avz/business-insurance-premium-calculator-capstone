@@ -28,7 +28,7 @@ export const H2 = styled.h2`
 export const LableAndInput = styled.div`
   box-sizing: border-box;
   width: 100%;
-  padding: 10px 25px;
+  padding: 5px 25px;
   @media only screen and (max-width: 600px) {
     align-items: flex-start;
     flex-direction: column;
@@ -36,8 +36,8 @@ export const LableAndInput = styled.div`
   input {
     width: 100%;
     margin-left: auto;
-    padding: 15px 20px;
-    margin: 10px 0;
+    padding: 8px 20px;
+
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -65,14 +65,16 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Button = styled.button`
-  background-color: rgb(14, 108, 185);
-  color: white;
-  padding: 15px;
-  border: none;
+  background-color:transparent;
+  color: rgb(14, 108, 185);
+  padding: 7px;
+
+  border: 1px solid rgb(14, 108, 185) ;
   cursor: pointer;
   width: 100%;
-  border-radius: 50px;
+  border-radius: 5px;
   &:hover {
-    background-color: #38af83 !important;
+    background-color:rgb(14, 108, 185) !important;
+    color:white;
   }
 `;

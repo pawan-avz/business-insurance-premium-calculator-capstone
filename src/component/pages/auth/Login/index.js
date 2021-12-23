@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import axios from "axios";
 
-import { setLoggedIn,fetchUserSuccess } from "../../../../redux";
+import { setLoggedIn, fetchUserSuccess } from "../../../../redux";
 import {
   Container,
   InnerContainer,
@@ -25,7 +25,7 @@ const SuccessMessage = styled.p`
   text-align: center;
 `;
 
-const Login = ({auth,setLogged,setUser}) => {
+const Login = ({ auth, setLogged, setUser }) => {
   const history = useHistory();
   const [state, setState] = useState({
     email: "",
@@ -79,14 +79,14 @@ const Login = ({auth,setLogged,setUser}) => {
 
   const postFetch = async () => {
     await axios
-      .post("http://localhost:8080/signing", state)
+      .post("http://localhost:8080/signing/", state)
       .then((response) => {
         console.log(response);
         setLoginMessage("login in successfully, Loading....");
-      
+
         setLogged();
-        setUser(response.data)
-        history.push("/dashboard")
+        setUser(response.data);
+        history.push("/dashboard");
       })
       .catch((errors) => {
         setLoginMessage("Invalid user name or password");
@@ -111,7 +111,7 @@ const Login = ({auth,setLogged,setUser}) => {
       value: state.email,
       errorMessage: emailError,
     },
-    {   
+    {
       lable: "Password",
       name: "password",
       type: "password",
@@ -198,14 +198,11 @@ const mapStateToProps = (state) => {
     auth: state.auth,
   };
 };
-const mapDispatchToProps=dispatch=>{
-	return{
-		setLogged:()=>dispatch(setLoggedIn()),
-    setUser:(users)=>dispatch(fetchUserSuccess(users))
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setLogged: () => dispatch(setLoggedIn()),
+    setUser: (users) => dispatch(fetchUserSuccess(users)),
+  };
+};
 
-	}
-  }
-
-export default connect(mapStateToProps,mapDispatchToProps)(Login);
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

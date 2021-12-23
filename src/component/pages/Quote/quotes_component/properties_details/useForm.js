@@ -3,18 +3,17 @@ import validateForm from "./validateForm";
 import StepContext from "../../step/StepContext";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-const useForm = (validate) => {
+import { Domain } from "../../../../../Config";
+const useForm = (user) => {
   let history = useHistory();
 
   let business = JSON.parse(localStorage.getItem("selected_business"));
 
   const [properties, setProperty] = React.useState({
-    item: business,
     brandName: "",
     model: "",
     rate: "",
     date: "",
-    email: "gowri@gmail.com",
   });
   const step = React.useContext(StepContext);
   const { changeBack, changeNext, steps } = step;
@@ -41,15 +40,21 @@ const useForm = (validate) => {
       // changeNext();
       // history.push(`/quote/form5`);
       const data = {
-        email: "manish@gmail.com",
-        name: properties.name,
-        brand_name: properties.brandName,
+        item: business.property,
         model: properties.model,
-        purchase_rate: properties.rate,
-        purchase_date: properties.date,
+        purchaseRate: properties.rate,
+        purchaseDate: properties.date,
+        coverageDate: business.date,
+        insuranceType: localStorage.getItem("insurance"),
+        insuranceSubType: business.registered,
+        email: user.username,
       };
+
+
+      const url = Domain + "/quote/property-details/";
       await axios
-        .post("http://localhost:8080/save-property", data)
+        .post(url, data)
+
         .then((response) => {
           changeNext();
           history.push(`/quote/form4`);

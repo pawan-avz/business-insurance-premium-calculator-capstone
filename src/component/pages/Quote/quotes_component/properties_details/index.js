@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { NavLink, Switch } from "react-router-dom";
 import StepContext from "../../step/StepContext";
+import { connect } from "react-redux";
 import {
   Container,
   Content,
@@ -25,8 +26,8 @@ const Scroll = styled.div`
   height: 500px;
 `;
 
-export default function Index() {
-  const { handleChange, properties, handleSubmit, errors } = useForm();
+function Index({ user }) {
+  const { handleChange, properties, handleSubmit, errors } = useForm(user);
   let field;
   const step = React.useContext(StepContext);
   const { changeBack, changeNext, steps } = step;
@@ -61,22 +62,21 @@ export default function Index() {
         <Scroll>
           <FormContainer>
             <form>
-              {inputData && inputData.map(data => (
-                <FormControl>
-                  <Label for={data.id}>{data.label}</Label>
-                  <InputDiv>
-                    <Input
-                      required
-                      type={data.type}
-                      placeholder={data.label}
-                      onChange={handleChange(data.id)}
-                    />
-                    {errors && (
-                      <ErrorMessage>{errors}</ErrorMessage>
-                    )}
-                  </InputDiv>
-                </FormControl>
-              ))}
+              {inputData &&
+                inputData.map((data) => (
+                  <FormControl>
+                    <Label for={data.id}>{data.label}</Label>
+                    <InputDiv>
+                      <Input
+                        required
+                        type={data.type}
+                        placeholder={data.label}
+                        onChange={handleChange(data.id)}
+                      />
+                      {errors && <ErrorMessage>{errors}</ErrorMessage>}
+                    </InputDiv>
+                  </FormControl>
+                ))}
             </form>
           </FormContainer>
         </Scroll>
@@ -86,11 +86,17 @@ export default function Index() {
           <BackButton onClick={changeBack}> back</BackButton>
         </NavLink>
 
-
-       <ContinueButton onClick={handleSubmit}>continue </ContinueButton>
-
-
+        <ContinueButton onClick={handleSubmit}>continue </ContinueButton>
       </ButtonDiv>
     </Container>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+    user: state.user.users,
+  };
+};
+
+export default connect(mapStateToProps)(Index);
