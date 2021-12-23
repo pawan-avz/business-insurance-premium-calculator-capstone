@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import validateForm from "./validateForm";
 import StepContext from "../../step/StepContext";
 import { useHistory } from "react-router-dom";
@@ -6,6 +6,7 @@ import axios from "axios";
 import { Domain } from "../../../../../Config";
 const useForm = (user) => {
   let history = useHistory();
+  const [success, setSuccess] = useState(false);
 
   let business = JSON.parse(localStorage.getItem("selected_business"));
 
@@ -62,7 +63,6 @@ const useForm = (user) => {
         .catch((errors) => {
           console.log(errors);
         });
-      // history.push(`/quote/form4`);
     }
   };
 

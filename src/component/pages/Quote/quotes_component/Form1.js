@@ -44,7 +44,7 @@ const Form1 = (props) => {
         >
           Check prices and get coverage today
         </h1>
-        <p>
+        <p style={{color:"#fff",fontWeight:"bold"}}>
           This website offers General Liability, Professional Liability, and
           Business Owners Policies online.
         </p>

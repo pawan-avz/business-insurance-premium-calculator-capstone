@@ -165,7 +165,7 @@ const Login = ({ auth, setLogged, setUser }) => {
                 onChange={(e) => [handle(e), validate(e)]}
               />
               {data.errorMessage ? (
-                <span style={{ color: "crimson" }}>{data.errorMessage}</span>
+                <span style={{ color: "#DA7B93" ,fontWeight:"bold",fontSize:"12px" }}>{data.errorMessage}</span>
               ) : null}
             </LableAndInput>
           ))}
@@ -180,6 +180,7 @@ const Login = ({ auth, setLogged, setUser }) => {
             <div key={index}>
               {data === "registration" && <span>Need an account? </span>}
               <NavLink
+            
                 type={data.split(" ")[0]}
                 to={"/" + data.split(" ").join("")}
               >

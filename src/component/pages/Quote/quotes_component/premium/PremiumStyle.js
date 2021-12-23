@@ -43,25 +43,28 @@ export const ContentDiv = styled.div`
 
 export const UL = styled.ul`
   li {
-    width: 80%;
+    width: 90%;
+    color: #fff;
+    font-weight: bold;
     border-radius: 3px;
-    padding: 25px 30px;
+    padding: 20px 30px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 25px;
   }
 
   .table-row {
-    background-color: #ffffff;
+    background-color: #376e6f;
+
     box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
   }
+
   .col-1 {
     width: 50%;
     text-align: left;
   }
   .col-2 {
-    width: 50%;
-    text-align: center;
+    text-align: right;
   }
 
   select {

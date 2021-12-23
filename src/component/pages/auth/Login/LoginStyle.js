@@ -5,9 +5,11 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+ 
 `;
 
 export const InnerContainer = styled.div`
+background-color:#376E6F;
   box-sizing: border-box;
   width: 40%;
   padding: 10px;
@@ -36,8 +38,8 @@ export const LableAndInput = styled.div`
   input {
     width: 100%;
     margin-left: auto;
-    padding: 15px 20px;
-    margin: 10px 0;
+    padding: 10px 20px;
+
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -65,16 +67,17 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Button = styled.button`
-  background-color: transparent;
+  background-color: #1C3334;
+
   outline-color: initial;
   border: 1px solid #ccc;
   border-radius: 5px;
-  color: rgb(61, 66, 68);
-  padding: 15px;
+  color: white;
+  padding: 10px;
   cursor: pointer;
   width: 100%;
   &:hover {
-    background-color: #38af83 !important;
+    background-color: #1C3334 !important;
     color: #fff;
   }
 `;
@@ -85,11 +88,13 @@ export const LoginFooter = styled.div`
   align-items: center;
   flex-direction: column;
 
+
   div {
     margin-top: 10px;
     a {
-      color: #38af83;
-      text-decoration: none;
+      color: #fff;
+      font-size:15px;
+      text-decoration: underline;
     }
   }
 `;
@@ -99,7 +104,7 @@ export const SocialLogin = styled.div`
   margin: auto;
   text-align: center;
   padding: 10px;
-  background-color: transparent;
+  background-color: white;
   outline-color: initial;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -123,13 +128,16 @@ export const OrSeprator = styled.div`
   margin-top: 20px;
   margin-bottom: 10px;
   font-size: 1em;
+ 
 `;
 
 export const OrText = styled.span`
-  background-color: transparent;
+  background-color:#2E151B;  
   position: absolute;
   left: 46%;
   top: 0;
   background: #fff;
+
   padding: 10px;
+  border-radius:40px;
 `;

@@ -81,7 +81,7 @@ body{
   padding: 10px 20px;
 }
 .back button {
-  background-color: crimson;
+  background-color:#1c3334;
   padding: 10px 30px;
 }
 .next_back .next button,
@@ -114,11 +114,12 @@ body{
 }
 
 .step.step-active {
-  color: crimson;
+  color: #Da7b93;
+  font-weight:bold;
 }
 .step.step-active .circle,
 .step.step-active .circle4 {
-  background-color: crimson;
+  background-color: #1c3334;
 }
 
 /* Circle */

@@ -13,7 +13,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(14, 108, 185);
+  background-color:#376e6f;
   
 
   .logo{
@@ -26,13 +26,15 @@ const Nav = styled.nav`
         font-weight: bold;
         font-size: 18px;
         text-transform: uppercase;
+        // font-family:cursive;
       }
       span{
-        font-size: 14px;
+        font-size: 17px;
         text-align: right;
         text-transform: lowercase;
         font-family:cursive;
-        color: rgb(191, 226, 108);
+        color: #fff;
+        font-weight:bold;
       }
   }
   

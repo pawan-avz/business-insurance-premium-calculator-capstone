@@ -25,24 +25,24 @@
 .customer_call {
   text-align: center;
   padding: 60px;
-  color: grey;
+  color:white;
   margin-bottom: 5%;
 }
 .profession {
   width: 50%;
 }
 .profession select {
-  padding: 15px 20px;
-  margin: 20px;
+  padding: 10px 20px;
+  margin: 10px;
   appearance: none;
   font-size: 15px;
   border-radius: 5px;
 }
 
 .get_quote button {
-  background-color: crimson;
+  background-color: #1C3334;
   color: white;
-  padding: 15px;
+  padding: 12px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
@@ -57,7 +57,7 @@
 
 .form2 {
   margin: 60px;
-  border: 2px solid #ccc;
+  border: 2px solid #fff;
   border-radius: 20px;
 }
 
@@ -109,7 +109,7 @@
 
 /* form 5 */
 .form5 {
-  border: 2px solid #ccc;
+  border: 2px solid #fff;
   border-radius: 20px;
   padding: 10px;
   margin: 5%;
@@ -121,7 +121,7 @@
 
 .form5 p {
   font-size: 50px;
-  color: #ccc;
+  color: #fff;
 }
 
 @media only screen and (max-width:600px)

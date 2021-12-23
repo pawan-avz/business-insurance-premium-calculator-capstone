@@ -4,20 +4,21 @@ import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import "../css/footer.css";
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer" style={{ backgroundColor: "#1C3334"}}>
       <div className="copyright">
-        copyrights &copy; 2021 business insurance premium calculator
+       
       </div>
 
       <div className="second_footer">
         <ul>
+         
           <NavLink to="">
+            <li>  copy  &copy;  2021  all rights   reserverd </li>
+          </NavLink>
+          <NavLink to="/about">
             <li>about</li>
           </NavLink>
-          <NavLink to="">
-            <li>term & condition</li>
-          </NavLink>
-          <NavLink to="">
+          <NavLink to="/contact">
             <li>contact us</li>
           </NavLink>
         </ul>

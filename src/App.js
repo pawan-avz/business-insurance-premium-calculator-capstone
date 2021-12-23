@@ -17,7 +17,8 @@ import styled from "styled-components";
 import Registration from "./component/pages/auth/Registration";
 import Profile from "./component/pages/profile";
 import Dashboard from "./component/pages/dashboard";
-
+import About from "./component/pages/about";
+import Contact from "./component/pages/contactus";
 import Reset from "./component/pages/auth/ForgotPassword";
 const Scroll = styled.div`
   overflow-y: scroll;
@@ -34,7 +35,7 @@ function App({ auth }) {
       <Navbar />
       <Scroll>
         <Route exact path="/">
-          {isLoggedIn ? <Redirect to="/dashboard" /> : <Home />}
+          {isLoggedIn ? <Redirect to="/profile" /> : <Home />}
         </Route>
         {isLoggedIn && (
           <>
@@ -75,7 +76,13 @@ function App({ auth }) {
         <Route exact path="/forgotpassword">
           <Forgotpswd />
         </Route>
-        <Redirect to="/" />
+        <Route exact path="/about">
+          <About />
+        </Route>
+        <Route exact path="/contact">
+          <Contact />
+        </Route>
+        {/* <Redirect to="/" /> */}
         <Footer />
       </Scroll>
     </div>

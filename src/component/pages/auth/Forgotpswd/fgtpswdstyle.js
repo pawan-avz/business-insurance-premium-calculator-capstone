@@ -14,6 +14,7 @@ export const InnerContainer = styled.div`
   padding: 10px;
   border: 2px solid #f1f1f1;
   border-radius: 5px;
+  background-color:#376E6F;
   @media only screen and (max-width: 600px) {
     width: 80%;
   }
@@ -38,8 +39,8 @@ export const LableAndInput = styled.div`
   input {
     width: 100%;
     margin-left: auto;
-    padding: 15px 20px;
-    margin: 15px 0;
+    padding: 10px 20px;
+
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -52,7 +53,7 @@ export const LableAndInput = styled.div`
   label {
     width: 100%;
     margin-right: 0px;
-    text-align: center;
+    text-align:left;
   }
   p{
     color:red;
@@ -72,15 +73,13 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Button = styled.button`
-  background-color: rgb(14, 108, 185);
-  color: white;
-  padding: 15px;
+background-color:#1C3334;
+color: white;
+  padding: 10px;
   border: none;
   cursor: pointer;
-  width: 50%;
+  width: 95%;
   font-size:18px;
-  border-radius: 50px;
-  &:hover {
-    background-color: #38af83 !important;
-  }
+  border-radius: 5px;
+ 
 `;

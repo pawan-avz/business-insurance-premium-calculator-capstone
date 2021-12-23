@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import { ErrorMessage } from '../../form/FormComponent';
 import {
     Container,
     InnerContainer,
@@ -48,7 +49,7 @@ const Forgotpswd = () => {
                      placeholder="enter your email"
                      onChange={handlechange}
                      />
-                     {error && <p>{error}</p>}
+                     {error && <ErrorMessage style={{color:"#DA7B93"}}>{error}</ErrorMessage>}
                  </LableAndInput>
                  <ButtonContainer>
                        <Button  onClick={handleclick}>Reset</Button>

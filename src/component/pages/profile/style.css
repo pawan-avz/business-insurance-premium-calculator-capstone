@@ -5,3 +5,19 @@
     border-radius:10px;
     box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
 }			                                                      
+
+
+.bg-1c3334{
+    background-color: #1c3334;
+}
+
+.bg-376e6f{
+    background-color: #376e6f;
+    color:white;
+   
+}
+.bg-376e6f:hover{
+    background-color: #376e6f;
+    color:#fff;
+   
+}

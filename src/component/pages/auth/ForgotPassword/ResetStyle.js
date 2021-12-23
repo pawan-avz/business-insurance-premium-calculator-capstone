@@ -9,6 +9,7 @@ export const Container = styled.div`
 
 export const InnerContainer = styled.div`
   box-sizing: border-box;
+  background-color:#376e6f;
   width: 550px;
   padding: 10px;
   border: 2px solid #f1f1f1;
@@ -36,7 +37,7 @@ export const LableAndInput = styled.div`
   input {
     width: 100%;
     margin-left: auto;
-    padding: 8px 20px;
+    padding: 10px 20px;
 
     display: inline-block;
     border: 1px solid #ccc;
@@ -50,7 +51,6 @@ export const LableAndInput = styled.div`
   label {
     width: 100%;
     margin-right: 0px;
-
   }
 `;
 
@@ -65,16 +65,15 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Button = styled.button`
-  background-color:transparent;
-  color: rgb(14, 108, 185);
-  padding: 7px;
 
-  border: 1px solid rgb(14, 108, 185) ;
+  background-color:#1c3334;
+  color: white;
+  padding: 10px;
+
+  border: 1px solid white ;
+
   cursor: pointer;
   width: 100%;
   border-radius: 5px;
-  &:hover {
-    background-color:rgb(14, 108, 185) !important;
-    color:white;
-  }
+  
 `;
