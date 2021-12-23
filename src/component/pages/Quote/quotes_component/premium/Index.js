@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-
+import StepContext from "../../step/StepContext";
 import {
   Container,
   HeadingDiv,
@@ -17,8 +17,9 @@ function Index() {
   const [data, setData] = useState({});
   const [message, setMessage] = useState("");
   const [total, setTotal] = useState(0);
-
-  const DATA = ["Simple Premium", "Business", data.item, data.basePremium];
+  const step = React.useContext(StepContext);
+  const { changeBack, changeNext, steps } = step;
+  const DATA = ["Simple Premium",data.insuranceType, "Business", data.item, data.basePremium];
 
   //feth data from backedn to show premium sheet
   useEffect(async () => {
@@ -50,6 +51,7 @@ function Index() {
       .then((response) => {
         console.log(response);
         setMessage(response.data);
+        changeNext();
       })
       .catch((errors) => {
         console.log(errors);
@@ -72,7 +74,7 @@ function Index() {
       <Container>
         <ContentDiv>
           <UL class="responsive-table">
-            {["Insurer", "Category", "Product", "Premium"].map(
+            {["Insurer","Insurance", "Category", "Product", "Premium"].map(
               (data, index) => (
                 <li class="table-row">
                   <div class="col col-1">{data}</div>
@@ -85,28 +87,12 @@ function Index() {
               )
             )}
 
-            <li class="table-row">
-              {/* for deductible amount */}
-              <div class="col col-1">Deductible*</div>
-              <div class="col col-2 select">
-                <select name="deductible" onChange={handler}>
-                  {["select", 10, 20, 30].map((optn) => (
-                    <option key={optn} value={optn}>
-                      {optn === "select" ? optn : optn + " %"}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </li>
-            <li class="table-row">
-              <div class="col col-1">Total</div>
-              <div class="col col-2"> ₹ {total}</div>
-            </li>
+           
           </UL>
         </ContentDiv>
         <ButtonDiv>
-          <NavLink to={`/quote/form4`}>
-            <BackButton>back</BackButton>
+          <NavLink to={`/quote/form3`}>
+            <BackButton onClick={changeBack}>back</BackButton>
           </NavLink>
           <ContinueButton onClick={savePremium}>purchase</ContinueButton>
         </ButtonDiv>

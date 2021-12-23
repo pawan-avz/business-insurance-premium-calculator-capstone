@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const InnerContainer = styled.div`
   box-sizing: border-box;
-  width: 40%;
+  width: 550px;
   padding: 10px;
   border: 2px solid #f1f1f1;
   border-radius: 5px;
@@ -50,7 +50,7 @@ export const LableAndInput = styled.div`
   label {
     width: 100%;
     margin-right: 0px;
-    text-align: center;
+
   }
 `;
 
