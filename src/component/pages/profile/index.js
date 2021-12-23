@@ -120,7 +120,7 @@ function Index({ user }) {
       ) : (
         <div className="container rounded bg-white mt-5 mb-5">
           <div className="row">
-            <div className="col-md-3 border-right">
+            <div className="col-md-4 border-right">
               <div className="d-flex flex-column align-items-center text-center p-3 py-5">
                 <img
                   className="rounded-circle mt-5"
@@ -134,7 +134,7 @@ function Index({ user }) {
                 <span> </span>
               </div>
             </div>
-            <div className="col-md-5 border-right">
+            <div className="col-md-8 border-right">
               <div className="p-3 py-5">
                 <div className="d-flex justify-content-between align-items-center mb-3">
                   <h4 className="text-right">Profile Settings</h4>
@@ -202,7 +202,7 @@ function Index({ user }) {
                     />
                   </div>
                 </div>
-                <div className="mt-5 text-center">
+                <div className="mt-5 ">
                   <button
                     className="btn btn-primary profile-button"
                     type="button"

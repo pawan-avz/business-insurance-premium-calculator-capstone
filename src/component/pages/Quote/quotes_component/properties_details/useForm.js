@@ -48,16 +48,16 @@ const useForm = (validate) => {
         purchase_rate: properties.rate,
         purchase_date: properties.date,
       };
-      // await axios
-      //   .post("http://localhost:8080/save-property", data)
-      //   .then((response) => {
-      //     changeNext();
-      //     history.push(`/quote/form4`);
-      //   })
-      //   .catch((errors) => {
-      //     console.log(errors);
-      //   });
-      history.push(`/quote/form4`);
+      await axios
+        .post("http://localhost:8080/save-property", data)
+        .then((response) => {
+          changeNext();
+          history.push(`/quote/form4`);
+        })
+        .catch((errors) => {
+          console.log(errors);
+        });
+      // history.push(`/quote/form4`);
     }
   };
 
