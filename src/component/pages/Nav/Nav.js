@@ -57,7 +57,14 @@ const Nav = ({ open, auth, logout, user }) => {
             </li>
           </NavLink>
           <NavLink to="/quote/form1">
-            <li style={{ backgroundColor:"transparent", border:"1px solid white",borderRadius:"5px", padding: "8px" }}>
+            <li
+              style={{
+                backgroundColor: "transparent",
+                border: "1px solid white",
+                borderRadius: "5px",
+                padding: "8px",
+              }}
+            >
               Get a Quote
             </li>
           </NavLink>
@@ -70,7 +77,12 @@ const Nav = ({ open, auth, logout, user }) => {
           <NavLink to="/">
             <li
               onClick={logout}
-              style={{ backgroundColor:"crimson", border:"1px solid white",borderRadius:"5px", padding: "8px" }}
+              style={{
+                backgroundColor: "crimson",
+                border: "1px solid white",
+                borderRadius: "5px",
+                padding: "8px",
+              }}
             >
               logout
             </li>
@@ -84,8 +96,11 @@ const Nav = ({ open, auth, logout, user }) => {
           <NavLink to="/login">
             <li>Login</li>
           </NavLink>
-          <NavLink to="/claim">
-            <li>Claim</li>
+          <NavLink to="/contact">
+            <li>Contact</li>
+          </NavLink>
+          <NavLink to="/about">
+            <li>About</li>
           </NavLink>
         </>
       )}
