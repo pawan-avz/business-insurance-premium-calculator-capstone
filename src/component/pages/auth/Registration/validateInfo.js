@@ -17,12 +17,12 @@ export default function validateInfo(values) {
     newerrors.lastName = "first name should contains alphabet *";
   }
 
-  if (!values.email) {
+  if (!values.username) {
     valid = false;
-    newerrors.email = "Email required *";
-  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+    newerrors.username = "Email required *";
+  } else if (!/\S+@\S+\.\S+/.test(values.username)) {
     valid = false;
-    newerrors.email = "Email address is invalid *";
+    newerrors.username = "Email address is invalid *";
   }
   if (!values.password) {
     valid = false;

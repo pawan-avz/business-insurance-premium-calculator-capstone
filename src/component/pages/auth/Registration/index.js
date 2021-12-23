@@ -77,10 +77,10 @@ export default function Index() {
                   type="text"
                   placeholder="Enter email"
                   name="email"
-                  onChange={handleChange("email")}
+                  onChange={handleChange("username")}
                 />
-                {errors.email && (
-                  <ErrorMessage>{errors.email}</ErrorMessage>
+                {errors.username && (
+                  <ErrorMessage>{errors.username}</ErrorMessage>
                 )}
               </InputDiv>
             </FormControl>

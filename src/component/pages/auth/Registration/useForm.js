@@ -9,7 +9,7 @@ const useForm = (validate) => {
   const [user, setUser] = React.useState({
     firstName: "",
     lastName: "",
-    email: "",
+    username: "",
     password: "",
     password2: "",
   });
