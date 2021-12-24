@@ -43,21 +43,16 @@ const Home = () => {
           <div className="homeIntro">
             <h1>Welcom to Business Insurance Premium Calculator</h1>
             <ul>
-              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-              <li>Ut interdum magna ac tortor tristique gravida.</li>
+              <li>Our policy helps your business bear the cost of liability claims arising from third party body.</li>
+              <li>If a business is not sufficiently insured against the property damage, the recovery cost will be entirely on owner.</li>
               <li>
-                Aenean sit amet purus in dui dictum porta vitae vitae nibh.
+              We help to insure pay off the fixed costs, if the business is unable to operate after disaster.
               </li>
-              <li>
-                Nam vitae felis pulvinar, aliquet ligula sit amet, congue
-                mauris.
-              </li>
-              <li>Fusce at velit vel velit vestibulum eleifend.</li>
             </ul>
 
             <div className="buttons">
-              <button className="readMore btn">Read more</button>
-              <button className="readMore btn">Go</button>
+              <button className="readMore">Read more</button>
+              <button className="readMore">Go</button>
             </div>
           </div>
         </div>
@@ -68,10 +63,9 @@ const Home = () => {
         <div className="plans">
           <h4>Our Plans</h4>
           <p>
-            The href attribute requires a valid value to be accessible. Provide
-            a valid, navigable address as the href value. If you cannot provide
-            a valid href, but still need the element to resemble a link, use a
-            button and change it with appropriate styles.
+          There are several options available for coverage for businesses The coverage 
+            your business requires depends on the things such as the industry, its location, number of employees, and size. 
+            It is probable that your insurance needs may change as the business grows.
           </p>
         </div>
 
