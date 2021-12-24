@@ -21,7 +21,8 @@ import {
   OrText,
 } from "./LoginStyle";
 const SuccessMessage = styled.p`
-  color: green;
+  color: white;
+  marggin-top:10px;
   text-align: center;
 `;
 
@@ -86,7 +87,7 @@ const Login = ({ auth, setLogged, setUser }) => {
 
         setLogged();
         setUser(response.data);
-        history.push("/dashboard");
+        history.push("/profile");
       })
       .catch((errors) => {
         setLoginMessage("Invalid user name or password");

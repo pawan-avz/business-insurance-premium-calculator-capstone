@@ -13,6 +13,7 @@ import {
 } from "../../../form/FormComponent";
 import StepContext from "../../step/StepContext";
 import { NavLink, Switch } from "react-router-dom";
+import Left from "../../Left";
 const registred = ["Association", "Corporation", "Indivisual", "Partnership"];
 
 const property=[{
@@ -31,6 +32,10 @@ export default function Index() {
   const step=React.useContext(StepContext);
   const {changeBack,changeNext,steps}=step;  
   return (
+    <div className="quotes_container">
+<Left step={3}/>
+
+    <div className="right_side">
     <Container>
       <Content>
         <FormHeading>Your Business</FormHeading>
@@ -100,5 +105,8 @@ export default function Index() {
    
       
     </Container>
+    </div>
+    </div>
+  
   );
 }

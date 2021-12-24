@@ -102,7 +102,7 @@ const ErrorMessage = styled.p`
 `;
 
 const SuccessMessage = styled.p`
-  color: green;
+  color: white;
   font-size: 12px;
   text-align: left;
   font-weight:bold;

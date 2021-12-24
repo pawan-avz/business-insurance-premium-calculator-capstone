@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import "../../../css/form1.css";
 import StepContext from "../step/StepContext";
 import { useHistory } from "react-router-dom";
+import Left from "../Left";
 const Form1 = (props) => {
   const step = React.useContext(StepContext);
   const { steps, changeBack, changeNext, resetStep } = step;
@@ -26,11 +27,18 @@ const Form1 = (props) => {
   const handleSumbit = (e) => {
     e.preventDefault();
     localStorage.setItem("insurance", insurance);
-    changeNext();
+   
     history.push("/quote/form2");
   };
+
   return (
     <>
+    <div className="quotes_container">
+        <Left step={2}/>
+
+        <div className="right_side">
+          
+      
       <div className="info_form1">
         <h1
           style={{
@@ -70,6 +78,8 @@ const Form1 = (props) => {
           7am – 10pm ET
         </p>
       </form>
+      </div>
+      </div>
     </>
   );
 };

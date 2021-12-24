@@ -1,5 +1,7 @@
+import axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
+import { Domain } from "../../../Config";
 import "./style.css";
 import useForm from "./useForm";
 function Index({ user }) {
@@ -10,6 +12,18 @@ function Index({ user }) {
     user,
     setprofileform
   );
+
+
+  React.useEffect(()=>{
+    const Url=Domain+"/profile";
+    console.log(user.username,"email");
+    axios.post(Url,{email:user.username})
+        .then(res=>{
+          setprofile(res.data);
+          setprofileform(res.data);
+        });
+        
+  },[])
   return (
     <>
       {profileform ? (
@@ -46,7 +60,7 @@ function Index({ user }) {
                               Mobile
                             </strong>
                           </td>
-                          <td className="text-primary">{profile.mobile}</td>
+                          <td className="text-light">{profile.mobile}</td>
                         </tr>
                         <tr>
                           <td>
@@ -55,7 +69,7 @@ function Index({ user }) {
                               Name
                             </strong>
                           </td>
-                          <td className="text-primary">
+                          <td className="text-light">
                             {profile.user && profile.user.firstName}{" "}
                             {profile.user && profile.user.lastName}
                           </td>
@@ -67,7 +81,7 @@ function Index({ user }) {
                               Address
                             </strong>
                           </td>
-                          <td className="text-primary">{profile.address}</td>
+                          <td className="text-light">{profile.address}</td>
                         </tr>
 
                         <tr>
@@ -77,7 +91,7 @@ function Index({ user }) {
                               City
                             </strong>
                           </td>
-                          <td className="text-primary">{profile.city}</td>
+                          <td className="text-light">{profile.city}</td>
                         </tr>
 
                         <tr>
@@ -87,7 +101,7 @@ function Index({ user }) {
                               State
                             </strong>
                           </td>
-                          <td className="text-primary">{profile.state}</td>
+                          <td className="text-light">{profile.state}</td>
                         </tr>
                         <tr>
                           <td>
@@ -96,7 +110,7 @@ function Index({ user }) {
                               Pincode
                             </strong>
                           </td>
-                          <td className="text-primary">{profile.pincode}</td>
+                          <td className="text-light">{profile.pincode}</td>
                         </tr>
                         <tr>
                           <td>
@@ -105,7 +119,7 @@ function Index({ user }) {
                               Role
                             </strong>
                           </td>
-                          <td className="text-primary">
+                          <td className="text-light">
                             {profile.user && profile.user.role}
                           </td>
                         </tr>
@@ -116,7 +130,7 @@ function Index({ user }) {
                               Email
                             </strong>
                           </td>
-                          <td className="text-primary">
+                          <td className="text-light">
                             {profile.user && profile.user.username}
                           </td>
                         </tr>

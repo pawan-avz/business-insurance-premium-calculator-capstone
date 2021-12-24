@@ -4,9 +4,12 @@ import StepContext from "../../step/StepContext";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { Domain } from "../../../../../Config";
-const useForm = (user) => {
-  let history = useHistory();
-  const [success, setSuccess] = useState(false);
+const useForm = (user, setData) => {
+  const [state, setState] = React.useState({
+    isLoading: false,
+    success: "",
+    error: "",
+  });
 
   let business = JSON.parse(localStorage.getItem("selected_business"));
 
@@ -29,17 +32,13 @@ const useForm = (user) => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const { newerrors, flag } = validateForm(properties);
 
     setErrors(newerrors);
 
     if (properties) {
-      console.log(properties, "sumdjhbjhfd");
-      // localStorage.setItem("selected_property", JSON.stringify(properties));
-      // changeNext();
-      // history.push(`/quote/form5`);
       const data = {
         item: business.property,
         model: properties.model,
@@ -51,22 +50,31 @@ const useForm = (user) => {
         email: user.username,
       };
 
-
       const url = Domain + "/quote/property-details/";
-      await axios
+      setState((prev) => ({ ...prev, isLoading: true }));
+      axios
         .post(url, data)
 
         .then((response) => {
-          changeNext();
-          history.push(`/quote/form4`);
+          console.log(response.data, "response");
+          setState({
+            isLoading: false,
+            success: response.data,
+            error: "",
+          });
+          setData(true);
         })
         .catch((errors) => {
-          console.log(errors);
+          setState({
+            isLoading: false,
+            success: "",
+            error: "data not added",
+          });
         });
     }
   };
 
-  return { handleChange, handleSubmit, errors, properties };
+  return { handleChange, handleSubmit, errors, properties, state };
 };
 
 export default useForm;

@@ -51,7 +51,7 @@ const Nav = ({ open, auth, logout, user }) => {
     <Ul open={open}>
       {isLoggedIn ? (
         <>
-          <NavLink to="/dashboard">
+          <NavLink to="/profile">
             <li>
               {user.firstName} {user.lastName}
             </li>
