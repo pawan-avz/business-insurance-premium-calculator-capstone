@@ -37,3 +37,47 @@
   font-weight: 200;
   font-family: fantasy;
 }
+@media only screen and (max-width:600px)
+{
+
+.footer{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+.copyright{
+  font-size: 13px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.second_footer{
+  width: 350px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* align-items: center; */
+}
+.second_footer ul{
+ margin: 0;
+ padding: 0;
+
+}
+.second_footer ul a {
+font-size: 18px;
+font-weight: 700;
+padding: 0px 10px;
+}
+
+
+.first_footer {
+  width: 80%;
+}
+.first_footer ul{
+  margin: 0;
+  padding: 0; 
+}
+.first_footer ul a{
+  padding: 5px 15px ;
+}
+}
